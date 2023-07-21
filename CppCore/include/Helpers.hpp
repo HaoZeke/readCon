@@ -1,6 +1,3 @@
 #pragma once
 
-
-namespace yodecon::helpers {
-
-}
+namespace yodecon::helpers {}
