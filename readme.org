@@ -1,0 +1,33 @@
+* About
+
+This is a repository meant to provide *fast* access to reading ~.con~ files from
+various languages. The goal is to be able to quickly generate visuals in a
+variety of interpreted languages.
+
+** Goals
+
+- Fast reader for both single ~.con~ and trajectory ~.con~ files
+- Pure C++17 core implementation
+- Apache Arrow wrapper
+
+** Rationale
+
+One of the main drawbacks of visualization is the need to read in specific file
+formats which may not map cleanly to delimited file specifications like ~csv~
+files. Additionally, languages which are meant for interactive visuals, like
+~Python~ or ~R~ often have sub-par file I/O capabilities for arbitrary formats.
+To this end, a core ~C++~ library with an Apache Arraow compatibility layer is a
+reasonable solution which allows minimal, expressive bindings to supported Arrow
+languages, while also providing simple enough inter-operability with unsupported
+languages like ~Fortran~.
+
+*** Existing solutions
+
+It is tempting to reach for or recreate an entire ecosystem of discipline
+specific code, as for example, the Atomic Simulation Environment (ASE) or
+AtomsBase.jl, both of which are excellent pedagogical aids with a rich
+machninery of helpers. Often these are not designed for interoperability or
+speed.
+
+* License
+MIT.
