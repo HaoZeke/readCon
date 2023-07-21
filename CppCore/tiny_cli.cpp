@@ -1,13 +1,7 @@
+#include "Helpers.hpp"
 #include "include/BaseTypes.hpp"
-#include "include/Helpers.hpp"
 #include "include/ReadCon.hpp"
-
-#include <cstdlib>
-#include <filesystem>
-#include <fstream>
-#include <iostream>
-
-namespace fs = std::filesystem;
+#include "include/StringHelpers.hpp"
 
 int main(int argc, char *argv[]) {
   if (argc != 2) {
@@ -16,24 +10,18 @@ int main(int argc, char *argv[]) {
   }
 
   std::string filename = argv[1];
+  // std::array<size_t, 4> header_linum = {1, 2, 5, 6};
+  // const size_t boxl_linum = 3;
+  // const size_t angle_linum = 4;
+  // const size_t natom_types_linum = 7;
+  // const size_t natoms_per_type_linum = 8;
+  // const size_t masses_per_type_linum = 9;
 
-  // Check if the file exists
-  if (fs::exists(filename)) {
-    // Open the file using std::filesystem::ifstream
-    std::ifstream file(filename);
+  auto fconts = yodecon::helpers::file::read_con_file(filename);
 
-    if (file.is_open()) {
-      // File successfully opened
-      std::string line;
-      while (std::getline(file, line)) {
-        std::cout << line << std::endl;
-      }
-      file.close();
-    } else {
-      std::cout << "Failed to open the file." << std::endl;
-    }
-  } else {
-    std::cout << "File not found." << std::endl;
+  for (auto &&line : fconts) {
+    std::cout << line << "\n";
   }
+
   return EXIT_SUCCESS;
 }

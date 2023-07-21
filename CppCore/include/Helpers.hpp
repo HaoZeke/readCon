@@ -13,4 +13,7 @@ namespace string {
 bool isNumber(const std::string &token);
 std::vector<std::string> get_split_strings(const std::string &line);
 } // namespace string
+namespace file {
+std::vector<std::string> read_con_file(const std::string_view a_fname);
+}
 } // namespace yodecon::helpers
