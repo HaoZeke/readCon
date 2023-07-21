@@ -13,7 +13,8 @@ readconlib = library('readcon',
                  dependencies: _deps,
                  cpp_args: _args,
                  link_with: _linkto,
-                 install: true)
+                 install: false)
+_linkto += readconlib
 
 # --------------------- Executable
 

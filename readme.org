@@ -5,7 +5,7 @@ variety of interpreted languages.
 
 ** Goals
 - Fast reader for both single ~.con~ and trajectory ~.con~ files
-- Pure C++17 core implementation
+- Pure C++20 core implementation
 - Apache Arrow wrapper
 
 ** Rationale

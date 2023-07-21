@@ -1,7 +1,7 @@
 project('readCon', 'cpp',
   version : '1.5.3',
   default_options : ['warning_level=1',
-                     'cpp_std=c++17',
+                     'cpp_std=c++20',
                      'wrap_mode=forcefallback'])
 
 
