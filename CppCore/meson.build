@@ -17,7 +17,7 @@ readconlib = library('readcon',
 
 # --------------------- Executable
 
-trial_prog = executable('trial', 'main.cpp',
+tiny_cli = executable('tiny_cli', 'tiny_cli.cpp',
                        dependencies: _deps,
                        include_directories: _incdirs,
                        link_with: _linkto,
