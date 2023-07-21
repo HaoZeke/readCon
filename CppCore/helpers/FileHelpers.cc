@@ -1,28 +1,15 @@
-#include "include/StringHelpers.hpp"
-#include <filesystem>
-#include <fstream>
+#include "../include/Helpers.hpp"
+
 #include <iostream>
 #include <stdexcept>
 #include <string_view>
 
+#include <filesystem>
+#include <fstream>
+
 namespace fs = std::filesystem;
 
 namespace yodecon::helpers {
-namespace string {
-bool isNumber(const std::string &token) {
-  return std::regex_match(
-      token, std::regex(("((\\+|-)?[[:digit:]]+)(\\.(([[:digit:]]+)?))?")));
-}
-
-// Checks if a string is a number.
-// Splits a string into constituent strings by whitespace.
-std::vector<std::string> get_split_strings(const std::string &line) {
-  std::istringstream ss{line};
-  std::vector<std::string> split_strings{std::istream_iterator<std::string>{ss},
-                                         std::istream_iterator<std::string>()};
-  return split_strings;
-}
-} // namespace string
 namespace file {
 std::vector<std::string> read_con_file(const std::string_view a_fname) {
   if (fs::exists(a_fname)) {
