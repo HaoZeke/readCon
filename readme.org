@@ -6,6 +6,7 @@ variety of interpreted languages.
 ** Goals
 - Fast reader for both single ~.con~ and trajectory ~.con~ files
 - Pure C++20 core implementation
+  + ~fmt~ is used optionally for some debug printing
 - Apache Arrow wrapper
 
 ** Rationale

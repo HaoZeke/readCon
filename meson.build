@@ -50,6 +50,13 @@ if cppc.get_id() == 'msvc'
   endif
 endif
 
+# Some helpers
+if get_option('with_fmt')
+  fmt_dep = dependency('fmt', required : false)
+  _deps += fmt_dep
+  _args += ['-DWITH_FMT']
+endif
+
 # --------------------- Library
 
 subdir('CppCore') # defines readconlib
