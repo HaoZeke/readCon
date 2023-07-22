@@ -92,9 +92,6 @@ ConvertToArrowTable(const yodecon::types::ConFrame &conFrame) {
   // Add metadata to schema
   schema = schema->WithMetadata(metadata);
 
-  // Add metadata to schema
-  schema = schema->WithMetadata(metadata);
-
   // Create a vector of arrays corresponding to the schema
   std::vector<std::shared_ptr<arrow::Array>> array_vector = {
       symbolArray, massArray,    xArray,     yArray,
