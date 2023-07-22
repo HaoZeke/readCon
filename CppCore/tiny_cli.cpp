@@ -1,5 +1,4 @@
 #include "Helpers.hpp"
-#include "arrow/io/interfaces.h"
 #include "include/BaseTypes.hpp"
 #include "include/FormatConstants.hpp"
 #include "include/ReadCon.hpp"
@@ -16,6 +15,7 @@
 #include <arrow/csv/api.h>
 #include <arrow/filesystem/api.h>
 #include <arrow/io/api.h>
+#include <arrow/io/interfaces.h>
 #include <arrow/ipc/api.h>
 #include <arrow/table.h>
 #endif
