@@ -5,6 +5,11 @@
 #include "include/helpers/StringHelpers.hpp"
 #include <ranges>
 #include <stdexcept>
+
+#ifdef WITH_ARROW
+#include <arrow/api.h>
+#endif
+
 namespace yodecon {
 
 // TODO: Move into the ConFrame class later
@@ -36,4 +41,10 @@ void process_header(const Range &a_header, yodecon::types::ConFrame &conframe) {
 // TODO: Move into the ConFrame class later
 void process_coordinates(const std::vector<std::string> &a_filecontents,
                          yodecon::types::ConFrame &conframe);
+
+#ifdef WITH_ARROW
+std::shared_ptr<arrow::Table>
+ConvertToArrowTable(const yodecon::types::ConFrame &conFrame);
+#endif
 } // namespace yodecon
+// namespace yodecon
