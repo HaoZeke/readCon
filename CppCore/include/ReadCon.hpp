@@ -1,13 +1,18 @@
 #pragma once
 
 #include "include/BaseTypes.hpp"
+#include "include/FormatConstants.hpp"
 #include "include/helpers/StringHelpers.hpp"
+#include <stdexcept>
 namespace yodecon {
 
+// TODO: Move into the ConFrame class later
 template <typename Range>
 void process_header(const Range &a_header, yodecon::types::ConFrame &conframe) {
-  // Headers are always the first 9 lines via take
   std::vector<std::string> header_vec(a_header.begin(), a_header.end());
+  if (header_vec.size() != yodecon::constants::HeaderLength) {
+    throw std::invalid_argument("Headers are always 9 lines for a con file");
+  }
   conframe.prebox_header[0] = header_vec[0];
   conframe.prebox_header[1] = header_vec[1];
   conframe.boxl =

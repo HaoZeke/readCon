@@ -7,12 +7,14 @@
 namespace yodecon::types {
 
 struct AtomDatum {
-  char symbol;
+  std::string symbol;
   double mass, x, y, z;
   bool is_fixed;
   size_t atom_id;
 };
 
+// TODO: Give this an constructor taking a file
+// Delete the default constructor
 struct ConFrame {
   std::array<std::string, 2> prebox_header;
   std::array<double, 3> boxl;
