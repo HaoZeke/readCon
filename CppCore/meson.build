@@ -1,6 +1,5 @@
 # Source files
 src_files = [
-  'BaseTypes.cc',
   'helpers/FileHelpers.cc',
   'helpers/StringHelpers.cc',
   'ReadCon.cc',
