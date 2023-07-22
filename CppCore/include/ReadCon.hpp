@@ -3,6 +3,7 @@
 #include "include/BaseTypes.hpp"
 #include "include/FormatConstants.hpp"
 #include "include/helpers/StringHelpers.hpp"
+#include <ranges>
 #include <stdexcept>
 namespace yodecon {
 
@@ -32,4 +33,7 @@ void process_header(const Range &a_header, yodecon::types::ConFrame &conframe) {
           header_vec[8], conframe.natm_types);
 }
 
+// TODO: Move into the ConFrame class later
+void process_coordinates(const std::vector<std::string> &a_filecontents,
+                         yodecon::types::ConFrame &conframe);
 } // namespace yodecon
