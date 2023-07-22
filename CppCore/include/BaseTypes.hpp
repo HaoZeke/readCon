@@ -20,7 +20,7 @@ struct ConFrame {
   std::array<std::string, 2> postbox_header;
   size_t natm_types;
   std::vector<size_t> natms_per_type;
-  std::vector<size_t> masses_per_type;
+  std::vector<double> masses_per_type;
   std::vector<AtomDatum> atom_data;
 };
 
