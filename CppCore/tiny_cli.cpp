@@ -1,4 +1,5 @@
 #include "Helpers.hpp"
+#include "arrow/io/interfaces.h"
 #include "include/BaseTypes.hpp"
 #include "include/FormatConstants.hpp"
 #include "include/ReadCon.hpp"
@@ -9,6 +10,14 @@
 #include <fmt/format.h>
 #include <fmt/ostream.h>
 #include <fmt/ranges.h>
+#endif
+
+#ifdef WITH_ARROW
+#include <arrow/csv/api.h>
+#include <arrow/filesystem/api.h>
+#include <arrow/io/api.h>
+#include <arrow/ipc/api.h>
+#include <arrow/table.h>
 #endif
 
 int main(int argc, char *argv[]) {
@@ -58,6 +67,36 @@ int main(int argc, char *argv[]) {
   std::cout << std::to_string(tmp.natm_types);
   std::cout << yodecon::helpers::string::to_csv_string(tmp.natms_per_type);
   std::cout << yodecon::helpers::string::to_csv_string(tmp.masses_per_type);
+#endif
+
+#ifdef WITH_ARROW
+  // Convert to Arrow table
+  std::shared_ptr<arrow::Table> table = yodecon::ConvertToArrowTable(tmp);
+
+  // Write the table to a file
+  auto outfile = arrow::io::FileOutputStream::Open("test_out.csv");
+  auto write_options = arrow::csv::WriteOptions::Defaults();
+  if (WriteCSV(*table, write_options, outfile->get()).ok()) {
+    // Handle writer error...
+  }
+  // Read the table back from the file
+  std::shared_ptr<arrow::io::ReadableFile> infile;
+
+  // Print the schema's metadata
+  std::shared_ptr<const arrow::KeyValueMetadata> metadata =
+      table->schema()->metadata();
+  for (int i = 0; i < metadata->size(); ++i) {
+    std::cout << metadata->key(i) << ": " << metadata->value(i) << std::endl;
+  }
+
+  // Print the table
+  // fmt::print("{} {} {} {} {} {}", table->column(0)->chunk(0)->ToString(),
+  //            table->column(1)->chunk(0)->ToString(),
+  //            table->column(2)->chunk(0)->ToString(),
+  //            table->column(3)->chunk(0)->ToString(),
+  //            table->column(4)->chunk(0)->ToString(),
+  //            table->column(5)->chunk(0)->ToString(),
+  //            table->column(6)->chunk(0)->ToString());
 #endif
 
   return EXIT_SUCCESS;
