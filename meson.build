@@ -52,9 +52,17 @@ endif
 
 # Some helpers
 if get_option('with_fmt')
-  fmt_dep = dependency('fmt', required : false)
+  fmt_dep = dependency('fmt', required : true)
   _deps += fmt_dep
   _args += ['-DWITH_FMT']
+endif
+
+
+if get_option('with_apache_arrow')
+  # Easiest to use within the conda environment, needs arrow-cpp
+  arrow_dep = dependency('arrow', components: ['Arrow'], required : true)
+  _deps += arrow_dep
+  _args += ['-DWITH_ARROW']
 endif
 
 # --------------------- Library

@@ -2,3 +2,4 @@
 option('with_tests', type : 'boolean', value : false)
 option('with_examples', type : 'boolean', value : false)
 option('with_fmt', type : 'boolean', value : false)
+option('with_apache_arrow', type : 'boolean', value : false)
