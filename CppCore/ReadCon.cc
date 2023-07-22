@@ -12,9 +12,8 @@ void process_coordinates(const std::vector<std::string> &a_filecontents,
     size_t take_amount = natms + constants::CoordHeader;
     auto coords_view = a_filecontents | std::views::drop(drop_amount) |
                        std::views::take(take_amount);
+    tmp_atm.symbol = coords_view[0];
     for (auto &&line : coords_view | std::views::drop(constants::CoordHeader)) {
-      tmp_atm.symbol = coords_view[0];
-      tmp_atm.mass = conframe.masses_per_type[idx];
       std::tie(tmp_atm.x, tmp_atm.y, tmp_atm.z, tmp_atm.is_fixed,
                tmp_atm.atom_id) =
           helpers::string::get_array_from_string<double, 5>(line);
@@ -29,14 +28,13 @@ std::shared_ptr<arrow::Table>
 ConvertToArrowTable(const yodecon::types::ConFrame &conFrame) {
   // Create builders for each field
   arrow::StringBuilder symbolBuilder;
-  arrow::DoubleBuilder massBuilder, xBuilder, yBuilder, zBuilder;
+  arrow::DoubleBuilder xBuilder, yBuilder, zBuilder;
   arrow::BooleanBuilder isFixedBuilder;
   arrow::UInt64Builder atomIdBuilder;
 
   // Iterate through the data and append it to the builders
   for (const auto &atomDatum : conFrame.atom_data) {
     symbolBuilder.Append(atomDatum.symbol);
-    massBuilder.Append(atomDatum.mass);
     xBuilder.Append(atomDatum.x);
     yBuilder.Append(atomDatum.y);
     zBuilder.Append(atomDatum.z);
@@ -47,8 +45,6 @@ ConvertToArrowTable(const yodecon::types::ConFrame &conFrame) {
   // Finalize the arrays
   std::shared_ptr<arrow::Array> symbolArray;
   symbolBuilder.Finish(&symbolArray);
-  std::shared_ptr<arrow::Array> massArray;
-  massBuilder.Finish(&massArray);
   std::shared_ptr<arrow::Array> xArray;
   xBuilder.Finish(&xArray);
   std::shared_ptr<arrow::Array> yArray;
@@ -63,7 +59,6 @@ ConvertToArrowTable(const yodecon::types::ConFrame &conFrame) {
   // Create a vector of fields to describe the schema
   std::vector<std::shared_ptr<arrow::Field>> schema_vector = {
       arrow::field("symbol", arrow::utf8()),
-      arrow::field("mass", arrow::float64()),
       arrow::field("x", arrow::float64()),
       arrow::field("y", arrow::float64()),
       arrow::field("z", arrow::float64()),
@@ -94,8 +89,7 @@ ConvertToArrowTable(const yodecon::types::ConFrame &conFrame) {
 
   // Create a vector of arrays corresponding to the schema
   std::vector<std::shared_ptr<arrow::Array>> array_vector = {
-      symbolArray, massArray,    xArray,     yArray,
-      zArray,      isFixedArray, atomIdArray};
+      symbolArray, xArray, yArray, zArray, isFixedArray, atomIdArray};
 
   // Create a table
   auto table = arrow::Table::Make(schema, array_vector);

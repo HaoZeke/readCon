@@ -8,7 +8,8 @@ namespace yodecon::types {
 
 struct AtomDatum {
   std::string symbol;
-  double mass, x, y, z;
+  // mass is redundant and in the conframe metadata
+  double x, y, z;
   bool is_fixed;
   size_t atom_id;
 };

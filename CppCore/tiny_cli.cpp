@@ -57,8 +57,8 @@ int main(int argc, char *argv[]) {
 #ifdef WITH_FMT
   fmt::print("{}\n", tmp.atom_data.size());
   for (auto &&tmp_id : tmp.atom_data) {
-    fmt::print("{} {} {} {} {} {} {}\n", tmp_id.symbol, tmp_id.mass, tmp_id.x,
-               tmp_id.y, tmp_id.z, tmp_id.is_fixed, tmp_id.atom_id);
+    fmt::print("{} {} {} {} {} {}\n", tmp_id.symbol, tmp_id.x, tmp_id.y,
+               tmp_id.z, tmp_id.is_fixed, tmp_id.atom_id);
   }
   std::cout << yodecon::helpers::string::to_csv_string(tmp.prebox_header);
   std::cout << yodecon::helpers::string::to_csv_string(tmp.boxl);
@@ -96,7 +96,6 @@ int main(int argc, char *argv[]) {
   //            table->column(3)->chunk(0)->ToString(),
   //            table->column(4)->chunk(0)->ToString(),
   //            table->column(5)->chunk(0)->ToString(),
-  //            table->column(6)->chunk(0)->ToString());
 #endif
 
   return EXIT_SUCCESS;
