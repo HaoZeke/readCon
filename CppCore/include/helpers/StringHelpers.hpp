@@ -87,4 +87,16 @@ std::array<T, N> get_array_from_string(const std::string &a_line) {
 
   return retval;
 }
+template <typename Container>
+std::string to_csv_string(const Container &container) {
+  std::ostringstream ss;
+  std::copy(container.begin(), container.end(),
+            std::ostream_iterator<typename Container::value_type>(ss, ","));
+  std::string result = ss.str();
+  return result.empty()
+             ? result
+             : result.substr(0, result.length() -
+                                    1); // get rid of the trailing comma
+}
+
 } // namespace yodecon::helpers::string

@@ -51,6 +51,13 @@ int main(int argc, char *argv[]) {
     fmt::print("{} {} {} {} {} {} {}\n", tmp_id.symbol, tmp_id.mass, tmp_id.x,
                tmp_id.y, tmp_id.z, tmp_id.is_fixed, tmp_id.atom_id);
   }
+  std::cout << yodecon::helpers::string::to_csv_string(tmp.prebox_header);
+  std::cout << yodecon::helpers::string::to_csv_string(tmp.boxl);
+  std::cout << yodecon::helpers::string::to_csv_string(tmp.angles);
+  std::cout << yodecon::helpers::string::to_csv_string(tmp.postbox_header);
+  std::cout << std::to_string(tmp.natm_types);
+  std::cout << yodecon::helpers::string::to_csv_string(tmp.natms_per_type);
+  std::cout << yodecon::helpers::string::to_csv_string(tmp.masses_per_type);
 #endif
 
   return EXIT_SUCCESS;
