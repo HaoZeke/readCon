@@ -4,9 +4,9 @@
 
 #include <range/v3/all.hpp>
 
-#include "include/BaseTypes.hpp"
-#include "include/FormatConstants.hpp"
-#include "include/helpers/StringHelpers.hpp"
+#include "BaseTypes.hpp"
+#include "FormatConstants.hpp"
+#include "helpers/StringHelpers.hpp"
 
 #ifdef WITH_ARROW
 #include <arrow/api.h>
