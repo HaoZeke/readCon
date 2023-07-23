@@ -10,6 +10,14 @@
 
 #ifdef WITH_ARROW
 #include <arrow/api.h>
+
+#define CHECK_ARROW_STATUS(status)                                             \
+  do {                                                                         \
+    auto _s = (status);                                                        \
+    if (!_s.ok()) {                                                            \
+      throw std::runtime_error(_s.ToString());                                 \
+    }                                                                          \
+  } while (0)
 #endif
 
 namespace yodecon {

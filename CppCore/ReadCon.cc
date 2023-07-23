@@ -36,27 +36,27 @@ ConvertToArrowTable(const yodecon::types::ConFrame &conFrame) {
 
   // Iterate through the data and append it to the builders
   for (const auto &atomDatum : conFrame.atom_data) {
-    symbolBuilder.Append(atomDatum.symbol);
-    xBuilder.Append(atomDatum.x);
-    yBuilder.Append(atomDatum.y);
-    zBuilder.Append(atomDatum.z);
-    isFixedBuilder.Append(atomDatum.is_fixed);
-    atomIdBuilder.Append(atomDatum.atom_id);
+    CHECK_ARROW_STATUS(symbolBuilder.Append(atomDatum.symbol));
+    CHECK_ARROW_STATUS(xBuilder.Append(atomDatum.x));
+    CHECK_ARROW_STATUS(yBuilder.Append(atomDatum.y));
+    CHECK_ARROW_STATUS(zBuilder.Append(atomDatum.z));
+    CHECK_ARROW_STATUS(isFixedBuilder.Append(atomDatum.is_fixed));
+    CHECK_ARROW_STATUS(atomIdBuilder.Append(atomDatum.atom_id));
   }
 
   // Finalize the arrays
   std::shared_ptr<arrow::Array> symbolArray;
-  symbolBuilder.Finish(&symbolArray);
+  CHECK_ARROW_STATUS(symbolBuilder.Finish(&symbolArray));
   std::shared_ptr<arrow::Array> xArray;
-  xBuilder.Finish(&xArray);
+  CHECK_ARROW_STATUS(xBuilder.Finish(&xArray));
   std::shared_ptr<arrow::Array> yArray;
-  yBuilder.Finish(&yArray);
+  CHECK_ARROW_STATUS(yBuilder.Finish(&yArray));
   std::shared_ptr<arrow::Array> zArray;
-  zBuilder.Finish(&zArray);
+  CHECK_ARROW_STATUS(zBuilder.Finish(&zArray));
   std::shared_ptr<arrow::Array> isFixedArray;
-  isFixedBuilder.Finish(&isFixedArray);
+  CHECK_ARROW_STATUS(isFixedBuilder.Finish(&isFixedArray));
   std::shared_ptr<arrow::Array> atomIdArray;
-  atomIdBuilder.Finish(&atomIdArray);
+  CHECK_ARROW_STATUS(atomIdBuilder.Finish(&atomIdArray));
 
   // Create a vector of fields to describe the schema
   std::vector<std::shared_ptr<arrow::Field>> schema_vector = {
