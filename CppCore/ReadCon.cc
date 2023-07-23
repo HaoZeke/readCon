@@ -96,6 +96,20 @@ ConvertToArrowTable(const yodecon::types::ConFrame &conFrame) {
 
   return table;
 }
+
+std::shared_ptr<arrow::RecordBatch>
+get_chunk_as_record_batch(std::shared_ptr<arrow::Table> table,
+                          int chunk_index) {
+  std::vector<std::shared_ptr<arrow::Array>> chunks;
+  for (int i = 0; i < table->num_columns(); i++) {
+    chunks.push_back(table->column(i)->chunk(chunk_index));
+  }
+
+  // Reconstruct a RecordBatch using the extracted chunks and the original
+  // table's schema
+  return arrow::RecordBatch::Make(table->schema(), chunks[0]->length(), chunks);
+}
+
 #endif
 
 } // namespace yodecon

@@ -45,6 +45,8 @@ void process_coordinates(const std::vector<std::string> &a_filecontents,
 #ifdef WITH_ARROW
 std::shared_ptr<arrow::Table>
 ConvertToArrowTable(const yodecon::types::ConFrame &conFrame);
+std::shared_ptr<arrow::RecordBatch>
+get_chunk_as_record_batch(std::shared_ptr<arrow::Table> table, int chunk_index);
 #endif
 } // namespace yodecon
 // namespace yodecon

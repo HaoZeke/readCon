@@ -89,6 +89,10 @@ int main(int argc, char *argv[]) {
     std::cout << metadata->key(i) << ": " << metadata->value(i) << std::endl;
   }
 
+  // Get recordbatch
+  std::shared_ptr<arrow::RecordBatch> rbatch =
+      yodecon::get_chunk_as_record_batch(table, 0);
+
   // Print the table
   // fmt::print("{} {} {} {} {} {}", table->column(0)->chunk(0)->ToString(),
   //            table->column(1)->chunk(0)->ToString(),
