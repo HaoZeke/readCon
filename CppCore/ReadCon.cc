@@ -1,6 +1,4 @@
 #include "include/ReadCon.hpp"
-#include "include/BaseTypes.hpp"
-#include "include/FormatConstants.hpp"
 
 namespace yodecon {
 void process_coordinates(const std::vector<std::string> &a_filecontents,
