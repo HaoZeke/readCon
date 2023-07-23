@@ -1,4 +1,4 @@
-name: Build and Test
+name: Conda Tests
 on:
   push:
     branches:
@@ -7,16 +7,31 @@ on:
     branches:
       - main
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   buildmamba:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.config.os }}
+    name: ${{ matrix.config.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        config:
+          - {os: windows-latest}
+          - {os: macOS-latest}
+          - {os: ubuntu-latest}
     steps:
       - uses: actions/checkout@v3
         with:
           submodules: "recursive"
           fetch-depth: 0
       - name: Install Conda environment
-        uses: mamba-org/provision-with-micromamba@main
+        uses: mamba-org/setup-micromamba@v1
+        with:
+          environment-file: environment.yml
+          cache-environment: true
       - name: Build and Test
         shell: bash -l {0}
         run: |

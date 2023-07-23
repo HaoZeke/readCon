@@ -11,6 +11,8 @@ _deps = [] # Dependencies
 _linkto = [] # All the sub-libraries
 _incdirs = [] # All the includes
 
+add_languages('c', required: true)
+cc = meson.get_compiler('c')
 cppc = meson.get_compiler('cpp')
 # Platform detection
 host_system = host_machine.system()
