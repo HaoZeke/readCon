@@ -11,7 +11,7 @@ namespace fs = std::filesystem;
 
 namespace yodecon::helpers {
 namespace file {
-std::vector<std::string> read_con_file(const std::string_view a_fname) {
+std::vector<std::string> read_con_file(const std::string &a_fname) {
   if (fs::exists(a_fname)) {
     std::ifstream file{a_fname};
     if (file.is_open()) {

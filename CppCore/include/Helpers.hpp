@@ -20,6 +20,6 @@ template <typename T, size_t N>
 std::array<T, N> get_array_from_string(const std::string &a_line);
 } // namespace string
 namespace file {
-std::vector<std::string> read_con_file(const std::string_view a_fname);
+std::vector<std::string> read_con_file(const std::string &a_fname);
 }
 } // namespace yodecon::helpers
