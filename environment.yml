@@ -11,4 +11,8 @@ dependencies:
   - meson
   - cmake
   - pkg-config
+  # Backports away from C++20
+  - range-v3
+  - fmt==9.1.0
+  # Optional
   - arrow-cpp

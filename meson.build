@@ -1,8 +1,8 @@
 project('readCon', 'cpp',
-  version : '1.5.3',
+  version : '0.0.1',
   default_options : ['warning_level=1',
-                     'cpp_std=c++20',
-                     'wrap_mode=forcefallback'])
+                     'cpp_std=c++17',
+                     'wrap_mode=default'])
 
 
 # Add C++ compiler options
@@ -50,9 +50,20 @@ if cppc.get_id() == 'msvc'
   endif
 endif
 
+# Needed
+ranges_dep = dependency('range-v3',
+                        version : ['>=0.11.0'])
+if not ranges_dep.found()
+  ranges_dep = dependency('ranges', subproject: subproject('ranges-v3'))
+endif
+_deps += ranges_dep
+
 # Some helpers
 if get_option('with_fmt')
-  fmt_dep = dependency('fmt', required : true)
+  fmt_dep = dependency('fmt', version: '9.1.0')
+  if not fmt_dep.found()
+    fmt_dep = dependency('fmt', subproject: subproject('fmt'))
+  endif
   _deps += fmt_dep
   _args += ['-DWITH_FMT']
 endif
