@@ -12,6 +12,11 @@ struct AtomDatum {
   double x, y, z;
   bool is_fixed;
   size_t atom_id;
+  AtomDatum() : symbol{"NaN"}, x{0}, y{0}, z{0}, is_fixed{false}, atom_id{0} {}
+  AtomDatum(std::string a_symbol, double a_x, double a_y, double a_z,
+            bool a_is_fixed, size_t a_atom_id)
+      : symbol{a_symbol}, x{a_x}, y{a_y}, z{a_z}, is_fixed{a_is_fixed},
+        atom_id{a_atom_id} {}
 };
 
 // TODO: Give this an constructor taking a file
