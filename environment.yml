@@ -9,6 +9,7 @@ channels:
 dependencies:
   - compilers
   - meson
+  - ninja
   - cmake
   - pkg-config
   # Backports away from C++20
