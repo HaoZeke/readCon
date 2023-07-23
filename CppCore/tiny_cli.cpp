@@ -40,7 +40,7 @@ int main(int argc, char *argv[]) {
   yodecon::types::ConFrame tmp;
 
   yodecon::process_header(
-      (fconts | std::views::take(yodecon::constants::HeaderLength)), tmp);
+      (fconts | ranges::views::take(yodecon::constants::HeaderLength)), tmp);
 
 #ifdef WITH_FMT
   fmt::print("prebox_headers: {}\n", tmp.prebox_header);

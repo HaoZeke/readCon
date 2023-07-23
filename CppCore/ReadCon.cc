@@ -8,10 +8,11 @@ void process_coordinates(const std::vector<std::string> &a_filecontents,
   for (size_t idx{0}; idx < conframe.natm_types; idx++) {
     size_t natms = conframe.natms_per_type[idx];
     size_t take_amount = natms + constants::CoordHeader;
-    auto coords_view = a_filecontents | std::views::drop(drop_amount) |
-                       std::views::take(take_amount);
+    auto coords_view = a_filecontents | ranges::views::drop(drop_amount) |
+                       ranges::views::take(take_amount);
     tmp_atm.symbol = coords_view[0];
-    for (auto &&line : coords_view | std::views::drop(constants::CoordHeader)) {
+    for (auto &&line :
+         coords_view | ranges::views::drop(constants::CoordHeader)) {
       auto dbl_line = helpers::string::get_array_from_string<double, 5>(line);
       tmp_atm.x = dbl_line[0];
       tmp_atm.y = dbl_line[1];

@@ -1,10 +1,12 @@
 #pragma once
 
+#include <stdexcept>
+
+#include <range/v3/all.hpp>
+
 #include "include/BaseTypes.hpp"
 #include "include/FormatConstants.hpp"
 #include "include/helpers/StringHelpers.hpp"
-#include <ranges>
-#include <stdexcept>
 
 #ifdef WITH_ARROW
 #include <arrow/api.h>
