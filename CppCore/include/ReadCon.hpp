@@ -53,23 +53,6 @@ void process_coordinates(const std::vector<std::string> &a_filecontents,
                          yodecon::types::ConFrame &conframe);
 
 // TODO: Maybe move to ConFrame, or a helpers section
-template <typename Key, typename Value>
-std::vector<Value>
-convert_keys_to_values(const std::vector<Key> &keys,
-                       const std::unordered_map<Key, Value> &map,
-                       const std::string &error_message) {
-  std::vector<Value> values;
-  for (const auto &key : keys) {
-    try {
-      values.push_back(map.at(key));
-    } catch (const std::out_of_range &e) {
-      std::cout << "Invalid Key: " << key << "\n";
-      throw std::invalid_argument(error_message);
-    }
-  }
-  return values;
-}
-
 std::vector<size_t>
 symbols_to_atomic_numbers(const std::vector<std::string> &a_symbols);
 std::vector<std::string>
