@@ -39,23 +39,15 @@ symbols_to_atomic_numbers(const std::vector<std::string> &a_symbols) {
 }
 
 std::vector<std::string>
-atomic_numbers_to_symbols(const std::vector<size_t> &a_atomic_numbers) {
-  // This is linear in the number of elements, would be faster to have
-  // AtomicSymbols, as a map has O(1). However, there are only 118 elements and
-  // so this is a moot point, and adding another const map is probably a worse
-  // trade-off
+atomic_numbers_to_symbols(const std::vector<size_t> &atomic_numbers) {
   std::vector<std::string> symbols;
-  for (const auto &number : a_atomic_numbers) {
-    auto it = std::find_if(
-        yodecon::types::known_info::AtomicNumbers.begin(),
-        yodecon::types::known_info::AtomicNumbers.end(),
-        [&number](const auto &pair) { return pair.second == number; });
-
-    if (it == yodecon::types::known_info::AtomicNumbers.end()) {
+  for (const auto &number : atomic_numbers) {
+    auto it = yodecon::types::known_info::AtomicSymbols.find(number);
+    if (it == yodecon::types::known_info::AtomicSymbols.end()) {
       throw std::invalid_argument("Invalid atomic number: " +
                                   std::to_string(number));
     }
-    symbols.push_back(it->first);
+    symbols.push_back(it->second);
   }
   return symbols;
 }
