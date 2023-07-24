@@ -42,6 +42,40 @@ TEST(ConFrameTest, Constructor) {
   EXPECT_EQ("O", conFrame.atom_data[0].symbol);
 }
 
+TEST(ConFrameTest, AtomicSymbolsRoundTrip) {
+  // Create a ConFrame with multiple AtomDatum objects.
+  ConFrame conFrame;
+  conFrame.atom_data.push_back(AtomDatum("H", 1.0, 2.0, 3.0, false, 1));
+  conFrame.atom_data.push_back(AtomDatum("C", 4.0, 5.0, 6.0, false, 2));
+  conFrame.atom_data.push_back(AtomDatum("O", 7.0, 8.0, 9.0, false, 3));
+
+  // Extract atomic symbols from ConFrame.
+  std::vector<std::string> atomicSymbols;
+  for (const auto &atom : conFrame.atom_data) {
+    atomicSymbols.push_back(atom.symbol);
+  }
+
+  // Convert atomic symbols to numbers.
+  std::vector<size_t> atomicNumbers =
+      yodecon::symbols_to_atomic_numbers(atomicSymbols);
+
+  // Check that the conversion was correct.
+  ASSERT_EQ(atomicNumbers.size(), 3);
+  EXPECT_EQ(atomicNumbers[0], 1); // H
+  EXPECT_EQ(atomicNumbers[1], 6); // C
+  EXPECT_EQ(atomicNumbers[2], 8); // O
+
+  // Convert atomic numbers back to symbols.
+  std::vector<std::string> roundTripSymbols =
+      yodecon::atomic_numbers_to_symbols(atomicNumbers);
+
+  // Check that the conversion back to symbols was correct.
+  ASSERT_EQ(roundTripSymbols.size(), 3);
+  EXPECT_EQ(roundTripSymbols[0], "H");
+  EXPECT_EQ(roundTripSymbols[1], "C");
+  EXPECT_EQ(roundTripSymbols[2], "O");
+}
+
 int main(int argc, char **argv) {
   testing::InitGoogleTest(&argc, argv);
   return RUN_ALL_TESTS();
