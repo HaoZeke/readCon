@@ -85,7 +85,7 @@ _linkto += readconlib
 
 # ------------------------ Tests
 
-if get_option('with_tests')
+if get_option('with_tests') and not is_windows
   gmock_dep = dependency('gmock', required: false)
   gtest_dep = dependency('gtest', main: true,)
   if not gtest_dep.found()
