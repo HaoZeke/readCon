@@ -36,6 +36,27 @@ TEST(SymbolToAtomicNumberTest, SingleSymbol) {
   EXPECT_EQ(yodecon::symbols_to_atomic_numbers(symbols), expected);
 }
 
+TEST(AtomicNumberToSymbolTest, TestValidAtomicNumbers) {
+  std::vector<size_t> atomic_numbers = {1, 6, 8, 15};
+  std::vector<std::string> expected_symbols = {"H", "C", "O", "P"};
+  EXPECT_EQ(yodecon::atomic_numbers_to_symbols(atomic_numbers),
+            expected_symbols);
+}
+
+TEST(AtomicNumberToSymbolTest, TestInvalidAtomicNumber) {
+  std::vector<size_t> atomic_numbers = {
+      1, 300}; // 300 is not a valid atomic number
+  EXPECT_THROW(yodecon::atomic_numbers_to_symbols(atomic_numbers),
+               std::invalid_argument);
+}
+
+TEST(AtomicNumberToSymbolTest, TestEmptyInput) {
+  std::vector<size_t> atomic_numbers = {};
+  std::vector<std::string> expected_symbols = {};
+  EXPECT_EQ(yodecon::atomic_numbers_to_symbols(atomic_numbers),
+            expected_symbols);
+}
+
 int main(int argc, char **argv) {
   testing::InitGoogleTest(&argc, argv);
   return RUN_ALL_TESTS();
