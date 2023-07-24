@@ -27,29 +27,16 @@ void process_coordinates(const std::vector<std::string> &a_filecontents,
 
 std::vector<size_t>
 symbols_to_atomic_numbers(const std::vector<std::string> &a_symbols) {
-  std::vector<size_t> numbers;
-  for (const auto &symbol : a_symbols) {
-    try {
-      numbers.push_back(yodecon::types::known_info::AtomicNumbers.at(symbol));
-    } catch (const std::out_of_range &e) {
-      throw std::invalid_argument("Invalid element symbol: " + symbol);
-    }
-  }
-  return numbers;
+  return yodecon::helpers::con::convert_keys_to_values<std::string, size_t>(
+      a_symbols, yodecon::types::known_info::AtomicNumbers,
+      "Invalid element symbol");
 }
 
 std::vector<std::string>
-atomic_numbers_to_symbols(const std::vector<size_t> &atomic_numbers) {
-  std::vector<std::string> symbols;
-  for (const auto &number : atomic_numbers) {
-    auto it = yodecon::types::known_info::AtomicSymbols.find(number);
-    if (it == yodecon::types::known_info::AtomicSymbols.end()) {
-      throw std::invalid_argument("Invalid atomic number: " +
-                                  std::to_string(number));
-    }
-    symbols.push_back(it->second);
-  }
-  return symbols;
+atomic_numbers_to_symbols(const std::vector<size_t> &a_atomic_numbers) {
+  return yodecon::helpers::con::convert_keys_to_values<size_t, std::string>(
+      a_atomic_numbers, yodecon::types::known_info::AtomicSymbols,
+      "Invalid atomic number");
 }
 
 #ifdef WITH_ARROW

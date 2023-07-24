@@ -52,7 +52,7 @@ void process_header(const Range &a_header, yodecon::types::ConFrame &conframe) {
 void process_coordinates(const std::vector<std::string> &a_filecontents,
                          yodecon::types::ConFrame &conframe);
 
-// TODO: Maybe move to ConFrame
+// TODO: Maybe move to ConFrame, or a helpers section
 std::vector<size_t>
 symbols_to_atomic_numbers(const std::vector<std::string> &a_symbols);
 std::vector<std::string>
