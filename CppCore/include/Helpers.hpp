@@ -6,6 +6,7 @@
 #include <sstream>
 #include <string>
 #include <type_traits>
+#include <unordered_map>
 #include <vector>
 
 namespace yodecon::helpers {
@@ -46,7 +47,8 @@ convert_keys_to_values(const std::vector<Key> &keys,
     try {
       values.push_back(map.at(key));
     } catch (const std::out_of_range &e) {
-      throw std::invalid_argument(error_message + ": " + to_string_helper(key));
+      throw std::invalid_argument(error_message + ": " +
+                                  yodecon::helpers::con::to_string_helper(key));
     }
   }
   return values;
