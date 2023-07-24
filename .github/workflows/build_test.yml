@@ -36,4 +36,5 @@ jobs:
         shell: bash -l {0}
         run: |
           meson setup bbdir -Dwith_tests=True
+          meson compile -C bbdir
           meson test -C bbdir
