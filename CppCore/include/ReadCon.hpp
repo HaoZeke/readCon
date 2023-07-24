@@ -55,7 +55,8 @@ void process_coordinates(const std::vector<std::string> &a_filecontents,
 // TODO: Maybe move to ConFrame
 std::vector<size_t>
 symbols_to_atomic_numbers(const std::vector<std::string> &a_symbols);
-
+std::vector<std::string>
+atomic_numbers_to_symbols(const std::vector<size_t> &a_atomic_numbers);
 #ifdef WITH_ARROW
 std::shared_ptr<arrow::Table>
 ConvertToArrowTable(const yodecon::types::ConFrame &conFrame);
