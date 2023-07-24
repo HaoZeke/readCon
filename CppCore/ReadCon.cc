@@ -42,12 +42,12 @@ std::vector<std::string>
 atomic_numbers_to_symbols(const std::vector<size_t> &atomic_numbers) {
   std::vector<std::string> symbols;
   for (const auto &number : atomic_numbers) {
-    auto it = yodecon::types::known_info::AtomicSymbols.find(number);
-    if (it == yodecon::types::known_info::AtomicSymbols.end()) {
+    try {
+      symbols.push_back(yodecon::types::known_info::AtomicSymbols.at(number));
+    } catch (const std::out_of_range &e) {
       throw std::invalid_argument("Invalid atomic number: " +
                                   std::to_string(number));
     }
-    symbols.push_back(it->second);
   }
   return symbols;
 }
