@@ -25,6 +25,18 @@ void process_coordinates(const std::vector<std::string> &a_filecontents,
   }
 }
 
+std::vector<size_t> convert_symbols(const std::vector<std::string> &a_symbols) {
+  std::vector<size_t> numbers;
+  for (const auto &symbol : a_symbols) {
+    try {
+      numbers.push_back(yodecon::types::known_info::atomicNumbers.at(symbol));
+    } catch (const std::out_of_range &e) {
+      throw std::invalid_argument("Invalid element symbol: " + symbol);
+    }
+  }
+  return numbers;
+}
+
 #ifdef WITH_ARROW
 std::shared_ptr<arrow::Table>
 ConvertToArrowTable(const yodecon::types::ConFrame &conFrame) {

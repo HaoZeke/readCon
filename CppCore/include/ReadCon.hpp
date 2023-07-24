@@ -52,6 +52,9 @@ void process_header(const Range &a_header, yodecon::types::ConFrame &conframe) {
 void process_coordinates(const std::vector<std::string> &a_filecontents,
                          yodecon::types::ConFrame &conframe);
 
+// TODO: Maybe move to ConFrame
+std::vector<size_t> convert_symbols(const std::vector<std::string> &a_symbols);
+
 #ifdef WITH_ARROW
 std::shared_ptr<arrow::Table>
 ConvertToArrowTable(const yodecon::types::ConFrame &conFrame);
