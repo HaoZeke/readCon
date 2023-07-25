@@ -34,9 +34,9 @@ void process_coordinates(const std::vector<std::string> &a_filecontents,
     size_t take_amount = natms + constants::CoordHeader;
     auto coords_view = a_filecontents | ranges::views::drop(drop_amount) |
                        ranges::views::take(take_amount);
-    tmp_atm.symbol = coords_view[0];
     for (auto &&line :
          coords_view | ranges::views::drop(constants::CoordHeader)) {
+      conframevec.symbol.push_back(coords_view[0]);
       auto dbl_line = helpers::string::get_array_from_string<double, 5>(line);
       conframevec.x.push_back(dbl_line[0]);
       conframevec.y.push_back(dbl_line[1]);
