@@ -40,6 +40,20 @@ struct ConFrame {
   std::vector<AtomDatum> atom_data;
 };
 
+struct ConFrameVec {
+  std::array<std::string, 2> prebox_header;
+  std::array<double, 3> boxl;
+  std::array<double, 3> angles;
+  std::array<std::string, 2> postbox_header;
+  size_t natm_types;
+  std::vector<size_t> natms_per_type;
+  std::vector<double> masses_per_type;
+  std::vector<std::string> symbol;
+  std::vector<double> x, y, z;
+  std::vector<bool> is_fixed;
+  std::vector<size_t> atom_id;
+};
+
 namespace known_info {
 const std::unordered_map<std::string, size_t> AtomicNumbers = {
     {"H", 1},    {"He", 2},   {"Li", 3},   {"Be", 4},   {"B", 5},

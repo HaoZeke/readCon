@@ -96,6 +96,7 @@ if get_option('with_tests') and not is_windows
   _args += ['-DWITH_TEST']
 test_array = [#
   ['ConFrame', 'testConFrame', 'TestConFrame.cc', ''],
+  ['ConFrameVec', 'testConFrameVec', 'TestConFrameVec.cc', ''],
   ['ConFrameHelpers', 'testConFrameHelpers', 'TestConFrameHelpers.cc', ''],
              ]
 foreach test : test_array

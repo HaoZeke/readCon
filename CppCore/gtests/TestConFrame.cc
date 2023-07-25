@@ -100,7 +100,7 @@ TEST(ConFrameTest, CreateSingleCon_SingleFile) {
       "7.94209999999999550    9.94699999999999740   11.73299999999999343 0  3"};
 
   // Call the function under test.
-  ConFrame result = yodecon::create_single_con(a_fconts);
+  auto result = yodecon::create_single_con<ConFrame>(a_fconts);
   // Check the resulting ConFrame object against expected values.
   ASSERT_EQ(result.prebox_header[0], "Random Number Seed");
   ASSERT_EQ(result.prebox_header[1], "Time");
@@ -177,7 +177,7 @@ TEST(ConFrameTest, CreateSingleCon_MultiFile) {
       "7.76944285714285154    9.94699999999999740   11.16538571428571380 0  3"};
 
   // Call the function under test.
-  ConFrame result = yodecon::create_single_con(a_fconts);
+  auto result = yodecon::create_single_con<ConFrame>(a_fconts);
   // Check the resulting ConFrame object against expected values.
   ASSERT_EQ(result.prebox_header[0], "Random Number Seed");
   ASSERT_EQ(result.prebox_header[1], "Time");
@@ -254,7 +254,7 @@ TEST(ConFrameTest, CreateMultiCon) {
       "7.76944285714285154    9.94699999999999740   11.16538571428571380 0  3"};
 
   // Call the function under test.
-  std::vector<ConFrame> results = yodecon::create_multi_con(a_fconts);
+  std::vector<ConFrame> results = yodecon::create_multi_con<ConFrame>(a_fconts);
   // We're expecting 2 frames from the input data
   ASSERT_EQ(results.size(), 2);
   // Check the first ConFrame
