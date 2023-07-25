@@ -50,10 +50,13 @@ types::ConFrame make_single_con(const std::vector<std::string> &a_fconts) {
   std::cout << "We have " << result.natm_types << " types. So we have "
             << result.natm_types * 2
             << " non-coordinate lines.\nThe last line of this frame is:";
-  size_t nframelines = natmlines + yodecon::constants::HeaderLength +
-                       (result.natm_types * 2) -
-                       1; // -1 for the indexing from 0
-  std::cout << a_fconts[nframelines];
+  size_t nframelines =
+      natmlines + yodecon::constants::HeaderLength + (result.natm_types * 2);
+  std::cout << a_fconts[nframelines - 1]; // -1 for the indexing from 0
+  // NOTE: This is inefficient, we can probably do better
+  std::vector<std::string> a_frame(a_fconts.begin(),
+                                   a_fconts.begin() + nframelines);
+  process_coordinates(a_frame, result);
   return result;
 }
 
