@@ -41,6 +41,152 @@ TEST(ConFrameVecTest, Constructor) {
   EXPECT_EQ(1, conFrameVec.atom_id[0]);
 }
 
+TEST(ConFrameVecTest, CreateSingleCon_SingleFile) {
+  // The actual lines of the single con file.
+  std::vector<std::string> a_fconts = {
+      "Random Number Seed",
+      "Time",
+      "15.345600\t21.702000\t100.000000",
+      "90.000000\t90.000000\t90.000000",
+      "0 0",
+      "218 0 1",
+      "2",
+      "2 2",
+      "63.546000 1.007930",
+      "Cu",
+      "Coordinates of Component 1",
+      "0.63940000000000108    0.90450000000000019    6.97529999999999539 1    "
+      "0",
+      "3.19699999999999873    0.90450000000000019    6.97529999999999539 1    "
+      "1",
+      "H",
+      "Coordinates of Component 2",
+      "8.68229999999999968    9.94699999999999740   11.73299999999999343 0  2",
+      "7.94209999999999550    9.94699999999999740   11.73299999999999343 0  3"};
+
+  // Call the function under test.
+  ConFrameVec result = yodecon::create_single_con<ConFrameVec>(a_fconts);
+  // Check the resulting ConFrame object against expected values.
+  ASSERT_EQ(result.prebox_header[0], "Random Number Seed");
+  ASSERT_EQ(result.prebox_header[1], "Time");
+
+  ASSERT_EQ(result.boxl[0], 15.345600);
+  ASSERT_EQ(result.boxl[1], 21.702000);
+  ASSERT_EQ(result.boxl[2], 100.000000);
+
+  ASSERT_EQ(result.angles[0], 90.000000);
+  ASSERT_EQ(result.angles[1], 90.000000);
+  ASSERT_EQ(result.angles[2], 90.000000);
+
+  ASSERT_EQ(result.natm_types, 2);
+  ASSERT_EQ(result.natms_per_type[0], 2);
+  ASSERT_EQ(result.natms_per_type[1], 2);
+
+  ASSERT_EQ(result.masses_per_type[0], 63.546000);
+  ASSERT_EQ(result.masses_per_type[1], 1.007930);
+
+  ASSERT_EQ(result.symbol[0], "Cu");
+  ASSERT_DOUBLE_EQ(result.x[0], 0.63940000000000108);
+  ASSERT_DOUBLE_EQ(result.y[0], 0.90450000000000019);
+  ASSERT_DOUBLE_EQ(result.z[0], 6.97529999999999539);
+  ASSERT_EQ(result.is_fixed[0], true);
+  ASSERT_EQ(result.atom_id[0], 0);
+
+  ASSERT_EQ(result.symbol[1], "Cu");
+  ASSERT_DOUBLE_EQ(result.x[1], 3.19699999999999873);
+  ASSERT_DOUBLE_EQ(result.y[1], 0.90450000000000019);
+  ASSERT_DOUBLE_EQ(result.z[1], 6.97529999999999539);
+  ASSERT_EQ(result.is_fixed[1], true);
+  ASSERT_EQ(result.atom_id[1], 1);
+
+  ASSERT_EQ(result.symbol[2], "H");
+  ASSERT_DOUBLE_EQ(result.x[2], 8.68229999999999968);
+  ASSERT_DOUBLE_EQ(result.y[2], 9.94699999999999740);
+  ASSERT_DOUBLE_EQ(result.z[2], 11.73299999999999343);
+  ASSERT_EQ(result.is_fixed[2], false);
+  ASSERT_EQ(result.atom_id[2], 2);
+
+  ASSERT_EQ(result.symbol[3], "H");
+  ASSERT_DOUBLE_EQ(result.x[3], 7.94209999999999550);
+  ASSERT_DOUBLE_EQ(result.y[3], 9.94699999999999740);
+  ASSERT_DOUBLE_EQ(result.z[3], 11.73299999999999343);
+  ASSERT_EQ(result.is_fixed[3], false);
+  ASSERT_EQ(result.atom_id[3], 3);
+}
+
+TEST(ConFrameVecTest, CreateSingleCon_MultiFile) {
+  // The actual lines of the multi con file.
+  std::vector<std::string> a_fconts = {
+      "Random Number Seed",
+      "Time",
+      "15.345600\t21.702000\t100.000000",
+      "90.000000\t90.000000\t90.000000",
+      "0 0",
+      "218 0 1",
+      "2",
+      "2 2",
+      "63.546000 1.007930",
+      "Cu",
+      "Coordinates of Component 1",
+      "0.63940000000000108    0.90450000000000019    6.97529999999999539 1    "
+      "0",
+      "3.19699999999999873    0.90450000000000019    6.97529999999999539 1    "
+      "1",
+      "H",
+      "Coordinates of Component 2",
+      "8.68229999999999968    9.94699999999999740   11.73299999999999343 0  2",
+      "7.94209999999999550    9.94699999999999740   11.73299999999999343 0  3"};
+
+  // Call the function under test.
+  ConFrameVec result = yodecon::create_single_con<ConFrameVec>(a_fconts);
+  // Check the resulting ConFrame object against expected values.
+  ASSERT_EQ(result.prebox_header[0], "Random Number Seed");
+  ASSERT_EQ(result.prebox_header[1], "Time");
+
+  ASSERT_EQ(result.boxl[0], 15.345600);
+  ASSERT_EQ(result.boxl[1], 21.702000);
+  ASSERT_EQ(result.boxl[2], 100.000000);
+
+  ASSERT_EQ(result.angles[0], 90.000000);
+  ASSERT_EQ(result.angles[1], 90.000000);
+  ASSERT_EQ(result.angles[2], 90.000000);
+
+  ASSERT_EQ(result.natm_types, 2);
+  ASSERT_EQ(result.natms_per_type[0], 2);
+  ASSERT_EQ(result.natms_per_type[1], 2);
+
+  ASSERT_EQ(result.masses_per_type[0], 63.546000);
+  ASSERT_EQ(result.masses_per_type[1], 1.007930);
+
+  ASSERT_EQ(result.symbol[0], "Cu");
+  ASSERT_DOUBLE_EQ(result.x[0], 0.63940000000000108);
+  ASSERT_DOUBLE_EQ(result.y[0], 0.90450000000000019);
+  ASSERT_DOUBLE_EQ(result.z[0], 6.97529999999999539);
+  ASSERT_EQ(result.is_fixed[0], true);
+  ASSERT_EQ(result.atom_id[0], 0);
+
+  ASSERT_EQ(result.symbol[1], "Cu");
+  ASSERT_DOUBLE_EQ(result.x[1], 3.19699999999999873);
+  ASSERT_DOUBLE_EQ(result.y[1], 0.90450000000000019);
+  ASSERT_DOUBLE_EQ(result.z[1], 6.97529999999999539);
+  ASSERT_EQ(result.is_fixed[1], true);
+  ASSERT_EQ(result.atom_id[1], 1);
+
+  ASSERT_EQ(result.symbol[2], "H");
+  ASSERT_DOUBLE_EQ(result.x[2], 8.68229999999999968);
+  ASSERT_DOUBLE_EQ(result.y[2], 9.94699999999999740);
+  ASSERT_DOUBLE_EQ(result.z[2], 11.73299999999999343);
+  ASSERT_EQ(result.is_fixed[2], false);
+  ASSERT_EQ(result.atom_id[2], 2);
+
+  ASSERT_EQ(result.symbol[3], "H");
+  ASSERT_DOUBLE_EQ(result.x[3], 7.94209999999999550);
+  ASSERT_DOUBLE_EQ(result.y[3], 9.94699999999999740);
+  ASSERT_DOUBLE_EQ(result.z[3], 11.73299999999999343);
+  ASSERT_EQ(result.is_fixed[3], false);
+  ASSERT_EQ(result.atom_id[3], 3);
+}
+
 int main(int argc, char **argv) {
   testing::InitGoogleTest(&argc, argv);
   return RUN_ALL_TESTS();
