@@ -1,6 +1,7 @@
 #pragma once
 
 #include <array>
+#include <numeric>
 #include <string>
 #include <vector>
 
@@ -17,6 +18,13 @@ struct AtomDatum {
             bool a_is_fixed, size_t a_atom_id)
       : symbol{a_symbol}, x{a_x}, y{a_y}, z{a_z}, is_fixed{a_is_fixed},
         atom_id{a_atom_id} {}
+  //  Not sure I want / need functions here (C compatility considerations)
+  //   Then again there are constructors already
+  //   bool operator==(const AtomDatum &rhs) const {
+  //   return symbol == rhs.symbol && std::abs(x - rhs.x) < 1e-9 &&
+  //          std::abs(y - rhs.y) < 1e-9 && std::abs(z - rhs.z) < 1e-9 &&
+  //          is_fixed == rhs.is_fixed && atom_id == rhs.atom_id;
+  // }
 };
 
 // TODO: Give this an constructor taking a file
