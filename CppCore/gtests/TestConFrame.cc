@@ -228,6 +228,129 @@ TEST(ConFrameTest, CreateSingleCon_MultiFile) {
   ASSERT_EQ(result.atom_data[3].atom_id, 3);
 }
 
+TEST(ConFrameTest, CreateMultiCon) {
+  // The actual lines of the multi con file.
+  std::vector<std::string> a_fconts = {
+      "Random Number Seed", "Time", "15.345600\t21.702000\t100.000000",
+      "90.000000\t90.000000\t90.000000", "0 0", "218 0 1", "2", "2 2",
+      "63.546000 1.007930", "Cu", "Coordinates of Component 1",
+      "0.63940000000000108    0.90450000000000019    6.97529999999999539 1    "
+      "0",
+      "3.19699999999999873    0.90450000000000019    6.97529999999999539 1    "
+      "1",
+      "H", "Coordinates of Component 2",
+      "8.68229999999999968    9.94699999999999740   11.73299999999999343 0  2",
+      "7.94209999999999550    9.94699999999999740   11.73299999999999343 0  3",
+      // Starting of the second con
+      "Random Number Seed", "Time", "15.345600\t21.702000\t100.000000",
+      "90.000000\t90.000000\t90.000000", "0 0", "218 0 1", "2", "2 2",
+      "63.546000 1.007930", "Cu", "Coordinates of Component 1",
+      "0.63940000000000108    0.90450000000000019    6.97529999999999539 1    "
+      "0",
+      "3.19699999999999873    0.90450000000000019    6.97529999999999539 1    "
+      "1",
+      "H", "Coordinates of Component 2",
+      "8.85495714285713653    9.94699999999999740   11.16538571428571380 0  2",
+      "7.76944285714285154    9.94699999999999740   11.16538571428571380 0  3"};
+
+  // Call the function under test.
+  std::vector<ConFrame> results = yodecon::create_multi_con(a_fconts);
+  // We're expecting 2 frames from the input data
+  ASSERT_EQ(results.size(), 2);
+  // Check the first ConFrame
+  {
+    const auto &result = results[0];
+    ASSERT_EQ(result.prebox_header[0], "Random Number Seed");
+    ASSERT_EQ(result.prebox_header[1], "Time");
+
+    ASSERT_EQ(result.boxl[0], 15.345600);
+    ASSERT_EQ(result.boxl[1], 21.702000);
+    ASSERT_EQ(result.boxl[2], 100.000000);
+
+    ASSERT_EQ(result.angles[0], 90.000000);
+    ASSERT_EQ(result.angles[1], 90.000000);
+    ASSERT_EQ(result.angles[2], 90.000000);
+
+    ASSERT_EQ(result.natm_types, 2);
+    ASSERT_EQ(result.natms_per_type[0], 2);
+    ASSERT_EQ(result.natms_per_type[1], 2);
+
+    ASSERT_EQ(result.masses_per_type[0], 63.546000);
+    ASSERT_EQ(result.masses_per_type[1], 1.007930);
+
+    ASSERT_EQ(result.atom_data.size(), 4);
+
+    ASSERT_EQ(result.atom_data[0].x, 0.63940000000000108);
+    ASSERT_EQ(result.atom_data[0].y, 0.90450000000000019);
+    ASSERT_EQ(result.atom_data[0].z, 6.97529999999999539);
+    ASSERT_EQ(result.atom_data[0].is_fixed, true);
+    ASSERT_EQ(result.atom_data[0].atom_id, 0);
+
+    ASSERT_EQ(result.atom_data[1].x, 3.19699999999999873);
+    ASSERT_EQ(result.atom_data[1].y, 0.90450000000000019);
+    ASSERT_EQ(result.atom_data[1].z, 6.97529999999999539);
+    ASSERT_EQ(result.atom_data[1].is_fixed, true);
+    ASSERT_EQ(result.atom_data[1].atom_id, 1);
+
+    ASSERT_EQ(result.atom_data[2].x, 8.68229999999999968);
+    ASSERT_EQ(result.atom_data[2].y, 9.94699999999999740);
+    ASSERT_EQ(result.atom_data[2].z, 11.73299999999999343);
+    ASSERT_EQ(result.atom_data[2].is_fixed, false);
+    ASSERT_EQ(result.atom_data[2].atom_id, 2);
+
+    ASSERT_EQ(result.atom_data[3].x, 7.94209999999999550);
+    ASSERT_EQ(result.atom_data[3].y, 9.94699999999999740);
+    ASSERT_EQ(result.atom_data[3].z, 11.73299999999999343);
+    ASSERT_EQ(result.atom_data[3].is_fixed, false);
+    ASSERT_EQ(result.atom_data[3].atom_id, 3);
+  }
+  // Check the second ConFrame
+  {
+    const auto &result = results[1];
+    ASSERT_EQ(result.prebox_header[0], "Random Number Seed");
+    ASSERT_EQ(result.prebox_header[1], "Time");
+
+    ASSERT_EQ(result.boxl[0], 15.345600);
+    ASSERT_EQ(result.boxl[1], 21.702000);
+    ASSERT_EQ(result.boxl[2], 100.000000);
+
+    ASSERT_EQ(result.angles[0], 90.000000);
+    ASSERT_EQ(result.angles[1], 90.000000);
+    ASSERT_EQ(result.angles[2], 90.000000);
+
+    ASSERT_EQ(result.natm_types, 2);
+    ASSERT_EQ(result.natms_per_type[0], 2);
+    ASSERT_EQ(result.natms_per_type[1], 2);
+
+    ASSERT_EQ(result.masses_per_type[0], 63.546000);
+    ASSERT_EQ(result.masses_per_type[1], 1.007930);
+
+    ASSERT_EQ(result.atom_data[0].x, 0.63940000000000108);
+    ASSERT_EQ(result.atom_data[0].y, 0.90450000000000019);
+    ASSERT_EQ(result.atom_data[0].z, 6.97529999999999539);
+    ASSERT_EQ(result.atom_data[0].is_fixed, true);
+    ASSERT_EQ(result.atom_data[0].atom_id, 0);
+
+    ASSERT_EQ(result.atom_data[1].x, 3.19699999999999873);
+    ASSERT_EQ(result.atom_data[1].y, 0.90450000000000019);
+    ASSERT_EQ(result.atom_data[1].z, 6.97529999999999539);
+    ASSERT_EQ(result.atom_data[1].is_fixed, true);
+    ASSERT_EQ(result.atom_data[1].atom_id, 1);
+
+    ASSERT_EQ(result.atom_data[2].x, 8.85495714285713653);
+    ASSERT_EQ(result.atom_data[2].y, 9.94699999999999740);
+    ASSERT_EQ(result.atom_data[2].z, 11.16538571428571380);
+    ASSERT_EQ(result.atom_data[2].is_fixed, false);
+    ASSERT_EQ(result.atom_data[2].atom_id, 2);
+
+    ASSERT_EQ(result.atom_data[3].x, 7.76944285714285154);
+    ASSERT_EQ(result.atom_data[3].y, 9.94699999999999740);
+    ASSERT_EQ(result.atom_data[3].z, 11.16538571428571380);
+    ASSERT_EQ(result.atom_data[3].is_fixed, false);
+    ASSERT_EQ(result.atom_data[3].atom_id, 3);
+  }
+}
+
 int main(int argc, char **argv) {
   testing::InitGoogleTest(&argc, argv);
   return RUN_ALL_TESTS();
