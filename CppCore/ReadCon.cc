@@ -39,4 +39,22 @@ atomic_numbers_to_symbols(const std::vector<size_t> &a_atomic_numbers) {
       "Invalid atomic number");
 }
 
+types::ConFrame make_single_con(const std::vector<std::string> &a_fconts) {
+  yodecon::types::ConFrame result;
+  yodecon::process_header(
+      (a_fconts | ranges::views::take(yodecon::constants::HeaderLength)),
+      result);
+  size_t natmlines = std::accumulate(result.natms_per_type.begin(),
+                                     result.natms_per_type.end(), 0);
+  std::cout << "We have " << natmlines << " atom lines.\n";
+  std::cout << "We have " << result.natm_types << " types. So we have "
+            << result.natm_types * 2
+            << " non-coordinate lines.\nThe last line of this frame is:";
+  size_t nframelines = natmlines + yodecon::constants::HeaderLength +
+                       (result.natm_types * 2) -
+                       1; // -1 for the indexing from 0
+  std::cout << a_fconts[nframelines];
+  return result;
+}
+
 } // namespace yodecon
