@@ -62,46 +62,4 @@ atomic_numbers_to_symbols(const std::vector<size_t> &a_atomic_numbers) {
       "Invalid atomic number");
 }
 
-types::ConFrame create_single_con(const std::vector<std::string> &a_fconts) {
-  yodecon::types::ConFrame result;
-  yodecon::process_header(
-      (a_fconts | ranges::views::take(yodecon::constants::HeaderLength)),
-      result);
-  size_t natmlines = std::accumulate(result.natms_per_type.begin(),
-                                     result.natms_per_type.end(), 0);
-  std::cout << "We have " << natmlines << " atom lines.\n";
-  std::cout << "We have " << result.natm_types << " types. So we have "
-            << result.natm_types * 2
-            << " non-coordinate lines.\nThe last line of this frame is:";
-  size_t nframelines =
-      natmlines + yodecon::constants::HeaderLength + (result.natm_types * 2);
-  std::cout << a_fconts[nframelines - 1] << "\n"; // -1 for the indexing from 0
-  // NOTE: This is inefficient, we can probably do better
-  std::vector<std::string> a_frame(a_fconts.begin(),
-                                   a_fconts.begin() + nframelines);
-  process_coordinates(a_frame, result);
-  return result;
-}
-
-std::vector<yodecon::types::ConFrame>
-create_multi_con(std::vector<std::string> a_fconts) {
-  std::vector<yodecon::types::ConFrame> result;
-  while (!a_fconts.empty()) {
-    // Create a single con frame
-    yodecon::types::ConFrame single_frame = create_single_con(a_fconts);
-    // Add this frame to the results
-    result.push_back(single_frame);
-    // Calculate the number of lines this frame contained
-    size_t natmlines = std::accumulate(single_frame.natms_per_type.begin(),
-                                       single_frame.natms_per_type.end(), 0);
-    size_t nframelines = natmlines + yodecon::constants::HeaderLength +
-                         (single_frame.natm_types * 2);
-    // Ensure we don't try to erase more lines than exist in a_fconts
-    nframelines = std::min(nframelines, a_fconts.size());
-    // Erase the lines of the frame we just processed from a_fconts
-    a_fconts.erase(a_fconts.begin(), a_fconts.begin() + nframelines);
-  }
-  return result;
-}
-
 } // namespace yodecon
