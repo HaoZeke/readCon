@@ -40,6 +40,9 @@ void process_header(const Range &a_header, ConFrameLike &conframe) {
 void process_coordinates(const std::vector<std::string> &a_filecontents,
                          yodecon::types::ConFrame &conframe);
 
+void process_coordinates(const std::vector<std::string> &a_filecontents,
+                         yodecon::types::ConFrameVec &conframe);
+
 //! This function extracts con file information from a vector of strings
 types::ConFrame create_single_con(const std::vector<std::string> &a_fconts);
 //! This function extracts a list of con data from a vector of strings
