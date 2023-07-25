@@ -8,18 +8,6 @@
 #include "FormatConstants.hpp"
 #include "helpers/StringHelpers.hpp"
 
-#ifdef WITH_ARROW
-#include <arrow/api.h>
-
-#define CHECK_ARROW_STATUS(status)                                             \
-  do {                                                                         \
-    auto _s = (status);                                                        \
-    if (!_s.ok()) {                                                            \
-      throw std::runtime_error(_s.ToString());                                 \
-    }                                                                          \
-  } while (0)
-#endif
-
 namespace yodecon {
 
 // TODO: Move into the ConFrame class later
@@ -57,11 +45,4 @@ std::vector<size_t>
 symbols_to_atomic_numbers(const std::vector<std::string> &a_symbols);
 std::vector<std::string>
 atomic_numbers_to_symbols(const std::vector<size_t> &a_atomic_numbers);
-#ifdef WITH_ARROW
-std::shared_ptr<arrow::Table>
-ConvertToArrowTable(const yodecon::types::ConFrame &conFrame);
-std::shared_ptr<arrow::RecordBatch>
-get_chunk_as_record_batch(std::shared_ptr<arrow::Table> table, int chunk_index);
-#endif
 } // namespace yodecon
-// namespace yodecon

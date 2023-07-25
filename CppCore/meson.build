@@ -1,15 +1,19 @@
 # Source files
-src_files = [
+_srcs = [
   'helpers/FileHelpers.cc',
   'helpers/StringHelpers.cc',
   'ReadCon.cc',
 ]
 
+if get_option('with_apache_arrow')
+  _srcs += [ 'ConArrow.cc' ]
+endif
+
 _incdirs += include_directories(['include'])
 
 # Create library
 readconlib = library('readcon',
-                 src_files,
+                 _srcs,
                  dependencies: _deps,
                  cpp_args: _args,
                  link_with: _linkto,
