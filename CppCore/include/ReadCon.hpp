@@ -10,9 +10,9 @@
 
 namespace yodecon {
 
-// TODO: Move into the ConFrame class later
-template <typename Range>
-void process_header(const Range &a_header, yodecon::types::ConFrame &conframe) {
+// TODO: Move into a class later
+template <typename Range, typename ConFrameLike>
+void process_header(const Range &a_header, ConFrameLike &conframe) {
   std::vector<std::string> header_vec(a_header.begin(), a_header.end());
   if (header_vec.size() != yodecon::constants::HeaderLength) {
     throw std::invalid_argument("Headers are always 9 lines for a con file");
