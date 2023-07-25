@@ -39,7 +39,7 @@ atomic_numbers_to_symbols(const std::vector<size_t> &a_atomic_numbers) {
       "Invalid atomic number");
 }
 
-types::ConFrame make_single_con(const std::vector<std::string> &a_fconts) {
+types::ConFrame create_single_con(const std::vector<std::string> &a_fconts) {
   yodecon::types::ConFrame result;
   yodecon::process_header(
       (a_fconts | ranges::views::take(yodecon::constants::HeaderLength)),

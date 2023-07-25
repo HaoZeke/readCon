@@ -37,7 +37,7 @@ int main(int argc, char *argv[]) {
   std::vector<std::string> fconts =
       yodecon::helpers::file::read_con_file(filename);
 
-  auto tmp = yodecon::make_single_con(fconts);
+  auto tmp = yodecon::create_single_con(fconts);
 
   // yodecon::types::ConFrame tmp;
 
