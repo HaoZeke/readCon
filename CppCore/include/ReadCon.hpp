@@ -42,6 +42,9 @@ void process_coordinates(const std::vector<std::string> &a_filecontents,
 
 //! This function extracts con file information from a vector of strings
 types::ConFrame create_single_con(const std::vector<std::string> &a_fconts);
+//! This function extracts a list of con data from a vector of strings
+std::vector<yodecon::types::ConFrame>
+create_multi_con(std::vector<std::string> a_fconts);
 
 // TODO: Maybe move to ConFrame, or a helpers section
 std::vector<size_t>
