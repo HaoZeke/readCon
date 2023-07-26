@@ -48,16 +48,16 @@ void process_coordinates(const std::vector<std::string> &a_filecontents,
   }
 }
 
-std::vector<size_t>
+std::vector<int>
 symbols_to_atomic_numbers(const std::vector<std::string> &a_symbols) {
-  return yodecon::helpers::con::convert_keys_to_values<std::string, size_t>(
+  return yodecon::helpers::con::convert_keys_to_values<std::string, int>(
       a_symbols, yodecon::types::known_info::AtomicNumbers,
       "Invalid element symbol");
 }
 
 std::vector<std::string>
-atomic_numbers_to_symbols(const std::vector<size_t> &a_atomic_numbers) {
-  return yodecon::helpers::con::convert_keys_to_values<size_t, std::string>(
+atomic_numbers_to_symbols(const std::vector<int> &a_atomic_numbers) {
+  return yodecon::helpers::con::convert_keys_to_values<int, std::string>(
       a_atomic_numbers, yodecon::types::known_info::AtomicSymbols,
       "Invalid atomic number");
 }

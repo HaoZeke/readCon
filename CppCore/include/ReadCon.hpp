@@ -89,8 +89,8 @@ std::vector<ConFrameLike> create_multi_con(std::vector<std::string> a_fconts) {
 }
 
 // TODO: Maybe move to ConFrame, or a helpers section
-std::vector<size_t>
+std::vector<int>
 symbols_to_atomic_numbers(const std::vector<std::string> &a_symbols);
 std::vector<std::string>
-atomic_numbers_to_symbols(const std::vector<size_t> &a_atomic_numbers);
+atomic_numbers_to_symbols(const std::vector<int> &a_atomic_numbers);
 } // namespace yodecon
