@@ -52,14 +52,14 @@ ConFrameLike create_single_con(const std::vector<std::string> &a_fconts) {
       result);
   size_t natmlines = std::accumulate(result.natms_per_type.begin(),
                                      result.natms_per_type.end(), 0);
-  std::cout << "We have " << natmlines << " atom lines.\n";
-  std::cout << "We have " << result.natm_types << " types. So we have "
-            << result.natm_types * 2
-            << " non-coordinate lines.\nThe last line of this frame is:";
+  // std::cout << "We have " << natmlines << " atom lines.\n";
+  // std::cout << "We have " << result.natm_types << " types. So we have "
+  //           << result.natm_types * 2
+  //           << " non-coordinate lines.\nThe last line of this frame is:";
   size_t nframelines =
       natmlines + yodecon::constants::HeaderLength + (result.natm_types * 2);
-  std::cout << a_fconts[nframelines - 1] << "\n"; // -1 for the indexing from 0
-  // NOTE: This is inefficient, we can probably do better
+  // std::cout << a_fconts[nframelines - 1] << "\n"; // -1 for the indexing from
+  // 0 NOTE: This is inefficient, we can probably do better
   std::vector<std::string> a_frame(a_fconts.begin(),
                                    a_fconts.begin() + nframelines);
   process_coordinates(a_frame, result);

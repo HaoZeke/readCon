@@ -73,10 +73,16 @@ int main(int argc, char *argv[]) {
   //              tmp.z[idx], tmp.is_fixed[idx], tmp.atom_id[idx]);
   // }
 
-  auto symbs = yodecon::symbols_to_atomic_numbers(tmp.symbol);
-  for (auto &&sym : symbs) {
+  auto atmnums = yodecon::symbols_to_atomic_numbers(tmp.symbol);
+  fmt::print("\n");
+  for (auto &&atmnm : atmnums) {
+    fmt::print("{} ", atmnm);
+  }
+  fmt::print("\n");
+  for (auto &&sym : tmp.symbol) {
     fmt::print("{} ", sym);
   }
+  fmt::print("\n");
   std::cout << yodecon::helpers::string::to_csv_string(tmp.prebox_header)
             << "\n";
   std::cout << yodecon::helpers::string::to_csv_string(tmp.boxl) << "\n";
