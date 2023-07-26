@@ -37,7 +37,7 @@ int main(int argc, char *argv[]) {
   std::vector<std::string> fconts =
       yodecon::helpers::file::read_con_file(filename);
 
-  auto tmp = yodecon::create_multi_con<yodecon::types::ConFrame>(fconts);
+  auto tmp = yodecon::create_single_con<yodecon::types::ConFrameVec>(fconts);
 
   //   // yodecon::types::ConFrame tmp;
 
@@ -45,36 +45,50 @@ int main(int argc, char *argv[]) {
   //   //     (fconts | ranges::views::take(yodecon::constants::HeaderLength)),
   //   tmp);
 
-  // #ifdef WITH_FMT
-  //   fmt::print("prebox_headers: {}\n", tmp.prebox_header);
-  //   fmt::print("box lengths: {}\n", tmp.boxl);
-  //   fmt::print("angles: {}\n", tmp.angles);
-  //   fmt::print("postbox_headers: {}\n", tmp.postbox_header);
-  //   fmt::print("natm_types: {}\n", tmp.natm_types);
-  //   fmt::print("natms_per_type: {}\n", tmp.natms_per_type);
-  //   fmt::print("masses_per_type: {}\n", tmp.masses_per_type);
-  // #endif
+#ifdef WITH_FMT
+  fmt::print("prebox_headers: {}\n", tmp.prebox_header);
+  fmt::print("box lengths: {}\n", tmp.boxl);
+  fmt::print("angles: {}\n", tmp.angles);
+  fmt::print("postbox_headers: {}\n", tmp.postbox_header);
+  fmt::print("natm_types: {}\n", tmp.natm_types);
+  fmt::print("natms_per_type: {}\n", tmp.natms_per_type);
+  fmt::print("masses_per_type: {}\n", tmp.masses_per_type);
+#endif
 
   //   //   yodecon::process_coordinates(fconts, tmp);
 
-  // #ifdef WITH_FMT
-  //   fmt::print("{}\n", tmp.atom_data.size());
-  //   for (auto &&tmp_id : tmp.atom_data) {
-  //     fmt::print("{} {} {} {} {} {}\n", tmp_id.symbol, tmp_id.x, tmp_id.y,
-  //                tmp_id.z, tmp_id.is_fixed, tmp_id.atom_id);
-  //   }
-  //   std::cout << yodecon::helpers::string::to_csv_string(tmp.prebox_header)
-  //             << "\n";
-  //   std::cout << yodecon::helpers::string::to_csv_string(tmp.boxl) << "\n";
-  //   std::cout << yodecon::helpers::string::to_csv_string(tmp.angles) << "\n";
-  //   std::cout << yodecon::helpers::string::to_csv_string(tmp.postbox_header)
-  //             << "\n";
-  //   std::cout << std::to_string(tmp.natm_types) << "\n";
-  //   std::cout << yodecon::helpers::string::to_csv_string(tmp.natms_per_type)
-  //             << "\n";
-  //   std::cout << yodecon::helpers::string::to_csv_string(tmp.masses_per_type)
-  //             << "\n";
-  // #endif
+#ifdef WITH_FMT
+  // // ConFrame
+  // fmt::print("{}\n", tmp.atom_data.size());
+  // for (auto &&tmp_id : tmp.atom_data) {
+  //   fmt::print("{} {} {} {} {} {}\n", tmp_id.symbol, tmp_id.x, tmp_id.y,
+  //              tmp_id.z, tmp_id.is_fixed, tmp_id.atom_id);
+  // }
+
+  // // ConFrameVec
+  // size_t framesize = std::accumulate(tmp.natms_per_type.begin(),
+  // tmp.natms_per_type.end(), 0); for (size_t idx{0}; idx < framesize; idx++){
+  //   fmt::print("{} {} {} {} {} {}\n", tmp.symbol[idx], tmp.x[idx],
+  //   tmp.y[idx],
+  //              tmp.z[idx], tmp.is_fixed[idx], tmp.atom_id[idx]);
+  // }
+
+  auto symbs = yodecon::symbols_to_atomic_numbers(tmp.symbol);
+  for (auto &&sym : symbs) {
+    fmt::print("{} ", sym);
+  }
+  std::cout << yodecon::helpers::string::to_csv_string(tmp.prebox_header)
+            << "\n";
+  std::cout << yodecon::helpers::string::to_csv_string(tmp.boxl) << "\n";
+  std::cout << yodecon::helpers::string::to_csv_string(tmp.angles) << "\n";
+  std::cout << yodecon::helpers::string::to_csv_string(tmp.postbox_header)
+            << "\n";
+  std::cout << std::to_string(tmp.natm_types) << "\n";
+  std::cout << yodecon::helpers::string::to_csv_string(tmp.natms_per_type)
+            << "\n";
+  std::cout << yodecon::helpers::string::to_csv_string(tmp.masses_per_type)
+            << "\n";
+#endif
 
   // #ifdef WITH_ARROW
   //   // Convert to Arrow table
