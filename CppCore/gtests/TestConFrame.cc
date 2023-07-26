@@ -56,7 +56,7 @@ TEST(ConFrameTest, AtomicSymbolsRoundTrip) {
   }
 
   // Convert atomic symbols to numbers.
-  std::vector<size_t> atomicNumbers =
+  std::vector<int> atomicNumbers =
       yodecon::symbols_to_atomic_numbers(atomicSymbols);
 
   // Check that the conversion was correct.
