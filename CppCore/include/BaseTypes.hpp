@@ -12,10 +12,10 @@ struct AtomDatum {
   // mass is redundant and in the conframe metadata
   double x, y, z;
   bool is_fixed;
-  size_t atom_id;
+  int atom_id;
   AtomDatum() : symbol{"NaN"}, x{0}, y{0}, z{0}, is_fixed{false}, atom_id{0} {}
   AtomDatum(std::string a_symbol, double a_x, double a_y, double a_z,
-            bool a_is_fixed, size_t a_atom_id)
+            bool a_is_fixed, int a_atom_id)
       : symbol{a_symbol}, x{a_x}, y{a_y}, z{a_z}, is_fixed{a_is_fixed},
         atom_id{a_atom_id} {}
   //  Not sure I want / need functions here (C compatility considerations)
@@ -51,11 +51,11 @@ struct ConFrameVec {
   std::vector<std::string> symbol;
   std::vector<double> x, y, z;
   std::vector<bool> is_fixed;
-  std::vector<size_t> atom_id;
+  std::vector<int> atom_id;
 };
 
 namespace known_info {
-const std::unordered_map<std::string, size_t> AtomicNumbers = {
+const std::unordered_map<std::string, int> AtomicNumbers = {
     {"H", 1},    {"He", 2},   {"Li", 3},   {"Be", 4},   {"B", 5},
     {"C", 6},    {"N", 7},    {"O", 8},    {"F", 9},    {"Ne", 10},
     {"Na", 11},  {"Mg", 12},  {"Al", 13},  {"Si", 14},  {"P", 15},
@@ -85,7 +85,7 @@ const std::unordered_map<std::string, size_t> AtomicNumbers = {
 // O(N) via linear searching the reverse map. In any case, memory increases
 // should be pretty trivial, while the lookup might be called multiple times
 // during a write-out so this is better.
-const std::unordered_map<size_t, std::string> AtomicSymbols = {
+const std::unordered_map<int, std::string> AtomicSymbols = {
     {1, "H"},    {2, "He"},   {3, "Li"},   {4, "Be"},   {5, "B"},
     {6, "C"},    {7, "N"},    {8, "O"},    {9, "F"},    {10, "Ne"},
     {11, "Na"},  {12, "Mg"},  {13, "Al"},  {14, "Si"},  {15, "P"},
