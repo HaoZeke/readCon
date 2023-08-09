@@ -83,6 +83,10 @@ endif
 subdir('CppCore') # defines readconlib
 _linkto += readconlib
 
+readcon_dep = declare_dependency(link_with: _linkto,
+                               dependencies: _deps,
+                               include_directories: _incdirs,
+                               )
 # ------------------------ Tests
 
 if get_option('with_tests') and not is_windows
