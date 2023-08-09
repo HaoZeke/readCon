@@ -4,6 +4,7 @@
 #include <numeric>
 #include <string>
 #include <vector>
+#include <unordered_map>
 
 namespace yodecon::types {
 
