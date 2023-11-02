@@ -81,7 +81,11 @@ endif
 # --------------------- Library
 
 subdir('CppCore') # defines readconlib
+_incdirs += [ 'CppCore' ]
 _linkto += readconlib
+readcon_dep = declare_dependency(include_directories: _incdirs,
+                                 link_with: _linkto,
+                                 dependencies: _deps)
 
 # ------------------------ Tests
 
