@@ -65,35 +65,35 @@ int main(int argc, char *argv[]) {
   //              tmp_id.z, tmp_id.is_fixed, tmp_id.atom_id);
   // }
 
-  // // ConFrameVec
-  // size_t framesize = std::accumulate(tmp.natms_per_type.begin(),
-  // tmp.natms_per_type.end(), 0); for (size_t idx{0}; idx < framesize; idx++){
-  //   fmt::print("{} {} {} {} {} {}\n", tmp.symbol[idx], tmp.x[idx],
-  //   tmp.y[idx],
-  //              tmp.z[idx], tmp.is_fixed[idx], tmp.atom_id[idx]);
-  // }
+  // ConFrameVec
+  size_t framesize =
+      std::accumulate(tmp.natms_per_type.begin(), tmp.natms_per_type.end(), 0);
+  for (size_t idx{0}; idx < framesize; idx++) {
+    fmt::print("{} {} {} {} {} {}\n", tmp.symbol[idx], tmp.x[idx], tmp.y[idx],
+               tmp.z[idx], tmp.is_fixed[idx], tmp.atom_id[idx]);
+  }
 
-  auto atmnums = yodecon::symbols_to_atomic_numbers(tmp.symbol);
-  fmt::print("\n");
-  for (auto &&atmnm : atmnums) {
-    fmt::print("{} ", atmnm);
-  }
-  fmt::print("\n");
-  for (auto &&sym : tmp.symbol) {
-    fmt::print("{} ", sym);
-  }
-  fmt::print("\n");
-  std::cout << yodecon::helpers::string::to_csv_string(tmp.prebox_header)
-            << "\n";
-  std::cout << yodecon::helpers::string::to_csv_string(tmp.boxl) << "\n";
-  std::cout << yodecon::helpers::string::to_csv_string(tmp.angles) << "\n";
-  std::cout << yodecon::helpers::string::to_csv_string(tmp.postbox_header)
-            << "\n";
-  std::cout << std::to_string(tmp.natm_types) << "\n";
-  std::cout << yodecon::helpers::string::to_csv_string(tmp.natms_per_type)
-            << "\n";
-  std::cout << yodecon::helpers::string::to_csv_string(tmp.masses_per_type)
-            << "\n";
+  // auto atmnums = yodecon::symbols_to_atomic_numbers(tmp.symbol);
+  // fmt::print("\n");
+  // for (auto &&atmnm : atmnums) {
+  //   fmt::print("{} ", atmnm);
+  // }
+  // fmt::print("\n");
+  // for (auto &&sym : tmp.symbol) {
+  //   fmt::print("{} ", sym);
+  // }
+  // fmt::print("\n");
+  // std::cout << yodecon::helpers::string::to_csv_string(tmp.prebox_header)
+  //           << "\n";
+  // std::cout << yodecon::helpers::string::to_csv_string(tmp.boxl) << "\n";
+  // std::cout << yodecon::helpers::string::to_csv_string(tmp.angles) << "\n";
+  // std::cout << yodecon::helpers::string::to_csv_string(tmp.postbox_header)
+  //           << "\n";
+  // std::cout << std::to_string(tmp.natm_types) << "\n";
+  // std::cout << yodecon::helpers::string::to_csv_string(tmp.natms_per_type)
+  //           << "\n";
+  // std::cout << yodecon::helpers::string::to_csv_string(tmp.masses_per_type)
+  //           << "\n";
 #endif
 
   // #ifdef WITH_ARROW
