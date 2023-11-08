@@ -2,7 +2,9 @@
 
 #include <stdexcept>
 
+#ifdef WITH_RANGE_V3
 #include <range/v3/all.hpp>
+#endif
 
 #include "BaseTypes.hpp"
 #include "FormatConstants.hpp"
@@ -43,6 +45,7 @@ void process_coordinates(const std::vector<std::string> &a_filecontents,
 void process_coordinates(const std::vector<std::string> &a_filecontents,
                          yodecon::types::ConFrameVec &conframe);
 
+#ifdef WITH_RANGE_V3
 //! This function extracts con file information from a vector of strings
 template <typename ConFrameLike>
 ConFrameLike create_single_con(const std::vector<std::string> &a_fconts) {
@@ -65,6 +68,24 @@ ConFrameLike create_single_con(const std::vector<std::string> &a_fconts) {
   process_coordinates(a_frame, result);
   return result;
 }
+#else
+//! This function extracts con file information from a vector of strings
+template <typename ConFrameLike>
+ConFrameLike create_single_con(const std::vector<std::string> &a_fconts) {
+  ConFrameLike result;
+  auto header_view = norange::take(a_fconts, yodecon::constants::HeaderLength);
+  yodecon::process_header(header_view, result);
+  size_t natmlines = std::accumulate(result.natms_per_type.begin(),
+                                     result.natms_per_type.end(), 0);
+  size_t nframelines = natmlines + yodecon::constants::HeaderLength +
+                       (result.natm_types * yodecon::constants::CoordHeader);
+  // Use take to get the subset of the frame content we're interested in
+  // NOTE: This is inefficient, we can probably do better
+  auto a_frame = norange::take(a_fconts, nframelines);
+  process_coordinates(a_frame, result);
+  return result;
+}
+#endif
 
 //! This function extracts a list of con data from a vector of strings
 template <typename ConFrameLike>
