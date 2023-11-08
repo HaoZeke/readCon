@@ -92,13 +92,11 @@ readcon_dep = declare_dependency(include_directories: _incdirs,
 # ------------------------ Tests
 
 if get_option('with_tests') and not is_windows
-  gmock_dep = dependency('gmock', required: false)
-  gtest_dep = dependency('gtest', main: true,)
-  if not gtest_dep.found()
-    gtest_dep = dependency('gtest', main: true,
-                           subproject: subproject('gtest'))
-  endif
-  _deps += [ gtest_dep, gmock_dep ]
+    _deps += dependency(
+      'Catch2',
+      method: 'cmake',
+      modules: ['Catch2::Catch2WithMain'],
+    )
   _args += ['-DWITH_TEST']
 test_array = [#
   ['ConFrame', 'testConFrame', 'TestConFrame.cc', ''],
@@ -108,7 +106,7 @@ test_array = [#
 foreach test : test_array
   test(test.get(0),
        executable(test.get(1),
-          sources : ['CppCore/gtests/'+test.get(2)],
+          sources : ['CppCore/tests/'+test.get(2)],
           dependencies : _deps,
           link_with : _linkto,
           cpp_args : _args,
