@@ -52,13 +52,16 @@ if cppc.get_id() == 'msvc'
   endif
 endif
 
-# Needed
-ranges_dep = dependency('range-v3',
-                        version : ['>=0.11.0'])
-if not ranges_dep.found()
-  ranges_dep = dependency('ranges', subproject: subproject('ranges-v3'))
+# Faster, but optional due to size
+if get_option('with_rangev3')
+  ranges_dep = dependency('range-v3',
+                          version : ['>=0.11.0'])
+  if not ranges_dep.found()
+    ranges_dep = dependency('ranges', subproject: subproject('ranges-v3'))
+  endif
+  _deps += ranges_dep
+  _args += ['-DWITH_RANGE_V3']
 endif
-_deps += ranges_dep
 
 # Some helpers
 if get_option('with_fmt')
