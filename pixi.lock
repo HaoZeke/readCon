@@ -107,6 +107,24 @@ package:
   size: 149515
   timestamp: 1690026108541
 - platform: linux-64
+  name: catch2
+  version: 3.4.0
+  category: main
+  manager: conda
+  dependencies:
+  - libgcc-ng >=12
+  url: https://conda.anaconda.org/conda-forge/linux-64/catch2-3.4.0-h00ab1b0_0.conda
+  hash:
+    md5: a1754ce72bb059a521a6c9644b4e6bdf
+    sha256: 35760560f568e28799419eaeb681b31c4f8fe919c0842c568834351677a4362f
+  build: h00ab1b0_0
+  arch: x86_64
+  subdir: linux-64
+  build_number: 0
+  license: BSL-1.0
+  size: 616467
+  timestamp: 1689256051291
+- platform: linux-64
   name: cmake
   version: 3.27.6
   category: main
@@ -155,28 +173,6 @@ package:
   license_family: MIT
   size: 192264
   timestamp: 1693283596462
-- platform: linux-64
-  name: gtest
-  version: 1.14.0
-  category: main
-  manager: conda
-  dependencies:
-  - libgcc-ng >=12
-  - libstdcxx-ng >=12
-  url: https://conda.anaconda.org/conda-forge/linux-64/gtest-1.14.0-h00ab1b0_1.conda
-  hash:
-    md5: d362a81b815334cc921b9362782881f3
-    sha256: 1d9cdafcbf43ece349311835e48a17d7835d7d0a7fe9d5d5e7b3d8d17e38ffb1
-  build: h00ab1b0_1
-  arch: x86_64
-  subdir: linux-64
-  build_number: 1
-  constrains:
-  - gmock 1.14.0
-  license: BSD-3-Clause
-  license_family: BSD
-  size: 404694
-  timestamp: 1691710003375
 - platform: linux-64
   name: keyutils
   version: 1.6.1
@@ -645,27 +641,6 @@ package:
   license_family: GPL
   size: 123341
   timestamp: 1604184579935
-- platform: linux-64
-  name: pkgconfig
-  version: 1.5.5
-  category: main
-  manager: conda
-  dependencies:
-  - pkg-config
-  - python >=3.3
-  url: https://conda.anaconda.org/conda-forge/noarch/pkgconfig-1.5.5-pyhd8ed1ab_4.tar.bz2
-  hash:
-    md5: 8b714fcb673b50d8a8e4094b6bf80ed6
-    sha256: a1337b36533cb2c15f5714bcc4ada5d1411252753561bb06bd3da4c5785de5df
-  build: pyhd8ed1ab_4
-  arch: x86_64
-  subdir: linux-64
-  build_number: 4
-  license: MIT
-  license_family: MIT
-  noarch: python
-  size: 10504
-  timestamp: 1667031217949
 - platform: linux-64
   name: python
   version: 3.12.0

@@ -16,7 +16,6 @@ dependencies:
   - range-v3
   - fmt==9.1.0
   # Tests
-  - gtest
-  - gmock
+  - catch2
   # Optional
   - arrow-cpp
