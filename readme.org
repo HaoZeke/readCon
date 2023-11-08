@@ -11,11 +11,12 @@ meson setup bbdir -Dwith_tests=true
 meson compile -C bbdir
 meson test -C bbdir
 #+end_src
-** Goals
-- Fast reader for both single ~.con~ and trajectory ~.con~ files
-- Pure C++20 core implementation
+** Features
+- [X] Fast reader for both single ~.con~ and trajectory ~.con~ files
+- [X] Pure C++17 core implementation, with optional helpers
   + ~fmt~ is used optionally for some debug printing
-- Apache Arrow wrapper
+  + ~range-v3~ can be used for more efficiency (views instead of copies)
+- [X] Apache Arrow wrapper
 
 ** Rationale
 One of the main drawbacks of visualization is the need to read in specific file
@@ -30,7 +31,7 @@ languages like ~Fortran~.
 *** Existing solutions
 It is tempting to reach for or recreate an entire ecosystem of discipline
 specific code, as for example, the Atomic Simulation Environment (ASE) or
-AtomsBase.jl, both of which are excellent pedagogical aids with a rich
+~AtomsBase.jl~, both of which are excellent pedagogical aids with a rich
 machninery of helpers. Often these are not designed for interoperability or
 speed.
 
