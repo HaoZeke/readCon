@@ -16,10 +16,12 @@ TEST_CASE("SymbolToAtomicNumberTest - ValidSymbols", "[SymbolToAtomicNumber]") {
   REQUIRE(yodecon::symbols_to_atomic_numbers(symbols) == expected);
 }
 
-TEST_CASE("SymbolToAtomicNumberTest - InvalidSymbol", "[SymbolToAtomicNumber]") {
+TEST_CASE("SymbolToAtomicNumberTest - InvalidSymbol",
+          "[SymbolToAtomicNumber]") {
   std::vector<std::string> symbols = {"H", "O", "N", "Fe", "InvalidSymbol"};
 
-  REQUIRE_THROWS_AS(yodecon::symbols_to_atomic_numbers(symbols), std::invalid_argument);
+  REQUIRE_THROWS_AS(yodecon::symbols_to_atomic_numbers(symbols),
+                    std::invalid_argument);
 }
 
 TEST_CASE("SymbolToAtomicNumberTest - EmptyInput", "[SymbolToAtomicNumber]") {
@@ -35,22 +37,28 @@ TEST_CASE("SymbolToAtomicNumberTest - SingleSymbol", "[SymbolToAtomicNumber]") {
   REQUIRE(yodecon::symbols_to_atomic_numbers(symbols) == expected);
 }
 
-TEST_CASE("AtomicNumberToSymbolTest - ValidAtomicNumbers", "[AtomicNumberToSymbol]") {
+TEST_CASE("AtomicNumberToSymbolTest - ValidAtomicNumbers",
+          "[AtomicNumberToSymbol]") {
   std::vector<int> atomic_numbers = {1, 6, 8, 15};
   std::vector<std::string> expected_symbols = {"H", "C", "O", "P"};
 
-  REQUIRE(yodecon::atomic_numbers_to_symbols(atomic_numbers) == expected_symbols);
+  REQUIRE(yodecon::atomic_numbers_to_symbols(atomic_numbers) ==
+          expected_symbols);
 }
 
-TEST_CASE("AtomicNumberToSymbolTest - InvalidAtomicNumber", "[AtomicNumberToSymbol]") {
-  std::vector<int> atomic_numbers = {1, 300}; // 300 is not a valid atomic number
+TEST_CASE("AtomicNumberToSymbolTest - InvalidAtomicNumber",
+          "[AtomicNumberToSymbol]") {
+  std::vector<int> atomic_numbers = {1,
+                                     300}; // 300 is not a valid atomic number
 
-  REQUIRE_THROWS_AS(yodecon::atomic_numbers_to_symbols(atomic_numbers), std::invalid_argument);
+  REQUIRE_THROWS_AS(yodecon::atomic_numbers_to_symbols(atomic_numbers),
+                    std::invalid_argument);
 }
 
 TEST_CASE("AtomicNumberToSymbolTest - EmptyInput", "[AtomicNumberToSymbol]") {
   std::vector<int> atomic_numbers = {};
   std::vector<std::string> expected_symbols = {};
 
-  REQUIRE(yodecon::atomic_numbers_to_symbols(atomic_numbers) == expected_symbols);
+  REQUIRE(yodecon::atomic_numbers_to_symbols(atomic_numbers) ==
+          expected_symbols);
 }

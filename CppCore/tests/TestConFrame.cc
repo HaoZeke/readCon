@@ -12,7 +12,7 @@
 #include <catch2/matchers/catch_matchers_floating_point.hpp>
 
 using namespace yodecon::types;
-constexpr double fp_tol {1e-12};
+constexpr double fp_tol{1e-12};
 
 TEST_CASE("AtomDatum Constructor") {
   AtomDatum atom("O", 1.0, 2.0, 3.0, false, 1);
@@ -298,11 +298,15 @@ TEST_CASE("ConFrameTest CreateMultiCon") {
 
     REQUIRE_THAT(result.boxl[0], Catch::Matchers::WithinAbs(15.345600, fp_tol));
     REQUIRE_THAT(result.boxl[1], Catch::Matchers::WithinAbs(21.702000, fp_tol));
-    REQUIRE_THAT(result.boxl[2], Catch::Matchers::WithinAbs(100.000000, fp_tol));
+    REQUIRE_THAT(result.boxl[2],
+                 Catch::Matchers::WithinAbs(100.000000, fp_tol));
 
-    REQUIRE_THAT(result.angles[0], Catch::Matchers::WithinAbs(90.000000, fp_tol));
-    REQUIRE_THAT(result.angles[1], Catch::Matchers::WithinAbs(90.000000, fp_tol));
-    REQUIRE_THAT(result.angles[2], Catch::Matchers::WithinAbs(90.000000, fp_tol));
+    REQUIRE_THAT(result.angles[0],
+                 Catch::Matchers::WithinAbs(90.000000, fp_tol));
+    REQUIRE_THAT(result.angles[1],
+                 Catch::Matchers::WithinAbs(90.000000, fp_tol));
+    REQUIRE_THAT(result.angles[2],
+                 Catch::Matchers::WithinAbs(90.000000, fp_tol));
 
     REQUIRE(result.natm_types == 2);
     REQUIRE(result.natms_per_type[0] == 2);
@@ -359,11 +363,15 @@ TEST_CASE("ConFrameTest CreateMultiCon") {
 
     REQUIRE_THAT(result.boxl[0], Catch::Matchers::WithinAbs(15.345600, fp_tol));
     REQUIRE_THAT(result.boxl[1], Catch::Matchers::WithinAbs(21.702000, fp_tol));
-    REQUIRE_THAT(result.boxl[2], Catch::Matchers::WithinAbs(100.000000, fp_tol));
+    REQUIRE_THAT(result.boxl[2],
+                 Catch::Matchers::WithinAbs(100.000000, fp_tol));
 
-    REQUIRE_THAT(result.angles[0], Catch::Matchers::WithinAbs(90.000000, fp_tol));
-    REQUIRE_THAT(result.angles[1], Catch::Matchers::WithinAbs(90.000000, fp_tol));
-    REQUIRE_THAT(result.angles[2], Catch::Matchers::WithinAbs(90.000000, fp_tol));
+    REQUIRE_THAT(result.angles[0],
+                 Catch::Matchers::WithinAbs(90.000000, fp_tol));
+    REQUIRE_THAT(result.angles[1],
+                 Catch::Matchers::WithinAbs(90.000000, fp_tol));
+    REQUIRE_THAT(result.angles[2],
+                 Catch::Matchers::WithinAbs(90.000000, fp_tol));
 
     REQUIRE(result.natm_types == 2);
     REQUIRE(result.natms_per_type[0] == 2);

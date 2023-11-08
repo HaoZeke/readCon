@@ -12,7 +12,7 @@
 #include <catch2/matchers/catch_matchers_floating_point.hpp>
 
 using namespace yodecon::types;
-constexpr double fp_tol {1e-12};
+constexpr double fp_tol{1e-12};
 
 TEST_CASE("ConFrameVecTest - Constructor", "[ConFrameVec]") {
   ConFrameVec conFrameVec;
