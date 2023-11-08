@@ -9,7 +9,27 @@
 #include <unordered_map>
 #include <vector>
 
-namespace yodecon::helpers {
+namespace yodecon {
+#ifndef WITH_RANGE_V3
+namespace norange {
+template <typename T> std::vector<T> take(const std::vector<T> &v, size_t n) {
+  std::vector<T> result;
+  // Copy up to n elements into result
+  std::copy_n(v.begin(), std::min(n, v.size()), std::back_inserter(result));
+  return result;
+}
+
+template <typename T> std::vector<T> drop(const std::vector<T> &v, size_t n) {
+  std::vector<T> result;
+  if (n < v.size()) {
+    // Copy elements from v starting from the nth element
+    std::copy(v.begin() + n, v.end(), std::back_inserter(result));
+  }
+  return result;
+}
+} // namespace norange
+#endif
+namespace helpers {
 
 namespace string {
 bool isNumber(const std::string &a_token);
@@ -55,4 +75,5 @@ convert_keys_to_values(const std::vector<Key> &keys,
 }
 } // namespace con
 
-} // namespace yodecon::helpers
+} // namespace helpers
+} // namespace yodecon

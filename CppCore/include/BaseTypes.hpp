@@ -3,8 +3,8 @@
 #include <array>
 #include <numeric>
 #include <string>
-#include <vector>
 #include <unordered_map>
+#include <vector>
 
 namespace yodecon::types {
 
