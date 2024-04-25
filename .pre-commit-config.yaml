@@ -19,6 +19,7 @@ repos:
       name: cpplint
       entry: cpplint
       language: system
+      types_or: [c++, c]
       args: ["--filter=-whitespace/comments"]
     - id: clang-format
       name: clang-format
