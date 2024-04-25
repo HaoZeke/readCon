@@ -17,9 +17,64 @@
 
 namespace yodecon {
 
-// TODO(rg): Move into a class later
+/**
+ * @brief Processes a range of strings representing header lines and assigns the
+ * parsed values into a ConFrameLike structure.
+ *
+ * This template function takes a range of strings, expected to be header lines
+ * from a .con file, and populates a given ConFrameLike structure with the
+ * parsed data. The header typically includes pre-box headers, box dimensions,
+ * angles, post-box headers, atom types, numbers of each atom type, and their
+ * masses.
+ *
+ * @tparam Range The type of the container representing a range of strings. Must
+ * support begin() and end() methods.
+ * @tparam ConFrameLike The type of the structure to be populated. Must have
+ * members corresponding to the expected headers such as prebox_header, boxl,
+ * angles, etc.
+ * @param a_header The range of strings each representing a line in the header
+ * of a .con file.
+ * @param conframe The ConFrameLike structure to populate with the parsed header
+ * data.
+ *
+ * @exception std::invalid_argument Thrown if the number of header lines does
+ * not match the expected count (9 lines), or if any of the line contents do not
+ * conform to the expected formats for box dimensions, angles, atom types, or
+ * masses.
+ *
+ * @details The function checks that the provided range contains exactly the
+ * number of lines expected for a standard .con file header (9 lines). It then
+ * parses these lines to initialize the properties of the `conframe` parameter.
+ *          The function is versatile and can adapt to different container types
+ * for the input range and different structures that conform to the expected
+ * layout of a ConFrame-like data structure.
+ *
+ *          The parsing includes:
+ *          - Pre-box header strings
+ *          - Box dimensions (converted from string to three doubles)
+ *          - Angles between the box sides (converted from string to three
+ * doubles)
+ *          - Post-box header strings
+ *          - The number of atom types (converted from string to size_t)
+ *          - The number of atoms per type (converted from string to a vector of
+ * size_t)
+ *          - Masses per atom type (converted from string to a vector of double)
+ *
+ * Example usage:
+ * @code
+ * std::vector<std::string> headerLines = {
+ *     "Pre-header line 1", "Pre-header line 2",
+ *     "10.0 20.0 30.0", "90.0 90.0 90.0",
+ *     "Post-header line 1", "Post-header line 2",
+ *     "3", "2 2 1", "16.0 12.0 1.0"
+ * };
+ * ConFrameLike conFrame;
+ * process_header(headerLines, conFrame);
+ * @endcode
+ */
 template <typename Range, typename ConFrameLike>
 void process_header(const Range &a_header, ConFrameLike &conframe) {
+  // TODO(rg): Move into a class later
   std::vector<std::string> header_vec(a_header.begin(), a_header.end());
   if (header_vec.size() != yodecon::constants::HeaderLength) {
     throw std::invalid_argument("Headers are always 9 lines for a con file");
