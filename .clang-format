@@ -1,37 +1,17 @@
 ---
 ### General default config, applies to all languages ###
-AccessModifierOffset:                 -4
 AlignAfterOpenBracket:                AlwaysBreak
 AlignConsecutiveAssignments:          true
 AlignOperands:                        true
 AlignTrailingComments:                true
-AllowShortCaseLabelsOnASingleLine:    true
-AllowShortFunctionsOnASingleLine:     Empty
-AllowShortIfStatementsOnASingleLine:  false
 BreakBeforeBinaryOperators:           All
-BreakBeforeBraces:                    Allman
-BreakBeforeTernaryOperators:          false
-ContinuationIndentWidth:  4
-ColumnLimit:              120
-IndentCaseLabels:         true
-IndentWidth:              4
-PenaltyBreakComment:      10000000
-SpaceBeforeParens:        Never
-SpacesInParentheses:      true
-TabWidth:                 4
-UseTab:                   Never
----
 Language:        Cpp
 # BasedOnStyle:  LLVM
 AccessModifierOffset: -2
-AlignAfterOpenBracket: Align
 AlignConsecutiveMacros: false
-AlignConsecutiveAssignments: false
 AlignConsecutiveBitFields: false
 AlignConsecutiveDeclarations: false
 AlignEscapedNewlines: Right
-AlignOperands:   Align
-AlignTrailingComments: true
 AllowAllArgumentsOnNextLine: true
 AllowAllConstructorInitializersOnNextLine: true
 AllowAllParametersOfDeclarationOnNextLine: true
@@ -67,7 +47,6 @@ BraceWrapping:
   SplitEmptyFunction: true
   SplitEmptyRecord: true
   SplitEmptyNamespace: true
-BreakBeforeBinaryOperators: None
 BreakBeforeBraces: Attach
 BreakBeforeInheritanceComma: false
 BreakInheritanceList: BeforeColon
