@@ -9,8 +9,6 @@ if get_option('with_apache_arrow')
   _srcs += [ 'ConArrow.cc' ]
 endif
 
-_incdirs += include_directories(['include'])
-
 # Create library
 readconlib = library('readcon',
                  _srcs,
