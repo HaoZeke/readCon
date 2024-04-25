@@ -1,4 +1,6 @@
-#include "include/ReadCon.hpp"
+// MIT License
+// Copyright 2023--present Rohit Goswami <HaoZeke>
+#include "readCon/include/ReadCon.hpp"
 
 namespace yodecon {
 #ifdef WITH_RANGE_V3

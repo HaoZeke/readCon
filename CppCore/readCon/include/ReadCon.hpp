@@ -1,18 +1,23 @@
 #pragma once
+// MIT License
+// Copyright 2023--present Rohit Goswami <HaoZeke>
 
+#include <algorithm>
 #include <stdexcept>
+#include <string>
+#include <vector>
 
 #ifdef WITH_RANGE_V3
 #include <range/v3/all.hpp>
 #endif
 
-#include "BaseTypes.hpp"
-#include "FormatConstants.hpp"
-#include "helpers/StringHelpers.hpp"
+#include "readCon/include/BaseTypes.hpp"
+#include "readCon/include/FormatConstants.hpp"
+#include "readCon/include/helpers/StringHelpers.hpp"
 
 namespace yodecon {
 
-// TODO: Move into a class later
+// TODO(rg): Move into a class later
 template <typename Range, typename ConFrameLike>
 void process_header(const Range &a_header, ConFrameLike &conframe) {
   std::vector<std::string> header_vec(a_header.begin(), a_header.end());
@@ -38,7 +43,7 @@ void process_header(const Range &a_header, ConFrameLike &conframe) {
           header_vec[8], conframe.natm_types);
 }
 
-// TODO: Move into the ConFrame class later
+// TODO(rg): Move into the ConFrame class later
 void process_coordinates(const std::vector<std::string> &a_filecontents,
                          yodecon::types::ConFrame &conframe);
 
@@ -109,7 +114,7 @@ std::vector<ConFrameLike> create_multi_con(std::vector<std::string> a_fconts) {
   return result;
 }
 
-// TODO: Maybe move to ConFrame, or a helpers section
+// TODO(rg): Maybe move to ConFrame, or a helpers section
 std::vector<int>
 symbols_to_atomic_numbers(const std::vector<std::string> &a_symbols);
 std::vector<std::string>

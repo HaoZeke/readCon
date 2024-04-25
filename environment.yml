@@ -19,3 +19,7 @@ dependencies:
   - catch2
   # Optional
   - arrow-cpp
+  # Pre-commit
+  - cpplint
+  - cppcheck
+  - clang-format

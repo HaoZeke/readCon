@@ -1,4 +1,6 @@
 #pragma once
+// MIT License
+// Copyright 2023--present Rohit Goswami <HaoZeke>
 
 #include <array>
 #include <numeric>
@@ -28,7 +30,7 @@ struct AtomDatum {
   // }
 };
 
-// TODO: Give this an constructor taking a file
+// TODO(rg): Give this an constructor taking a file
 // Delete the default constructor
 struct ConFrame {
   std::array<std::string, 2> prebox_header;

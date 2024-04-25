@@ -1,7 +1,13 @@
 #ifdef WITH_ARROW
+#pragma once
+// MIT License
+// Copyright 2023--present Rohit Goswami <HaoZeke>
+// clang-format off
+#include <arrow/api.h>
+#include <memory>
+// clang-format on
 #include "include/BaseTypes.hpp"
 #include "include/helpers/StringHelpers.hpp"
-#include <arrow/api.h>
 
 #define CHECK_ARROW_STATUS(status)                                             \
   do {                                                                         \
