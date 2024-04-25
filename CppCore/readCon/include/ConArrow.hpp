@@ -1,7 +1,11 @@
 #ifdef WITH_ARROW
+#pragma once
+// MIT License
+// Copyright 2023--present Rohit Goswami <HaoZeke>
 #include "include/BaseTypes.hpp"
 #include "include/helpers/StringHelpers.hpp"
 #include <arrow/api.h>
+#include <memory>
 
 #define CHECK_ARROW_STATUS(status)                                             \
   do {                                                                         \

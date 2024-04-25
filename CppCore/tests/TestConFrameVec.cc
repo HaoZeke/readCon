@@ -1,3 +1,5 @@
+// MIT License
+// Copyright 2023--present Rohit Goswami <HaoZeke>
 /*
  * TestConFrameVec.cc
  *
@@ -6,7 +8,7 @@
  *     Company: University of Iceland
  */
 
-#include "../include/ReadCon.hpp"
+#include "readCon/include/ReadCon.hpp"
 
 #include <catch2/catch_all.hpp>
 #include <catch2/matchers/catch_matchers_floating_point.hpp>

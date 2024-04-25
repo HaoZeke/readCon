@@ -1,3 +1,5 @@
+// MIT License
+// Copyright 2023--present Rohit Goswami <HaoZeke>
 /*
  * TestConFrameHelpers.cc
  *
@@ -6,7 +8,7 @@
  *     Company: University of Iceland
  */
 
-#include "../include/ReadCon.hpp"
+#include "readCon/include/ReadCon.hpp"
 #include <catch2/catch_all.hpp>
 
 TEST_CASE("SymbolToAtomicNumberTest - ValidSymbols", "[SymbolToAtomicNumber]") {

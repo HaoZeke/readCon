@@ -1,4 +1,11 @@
 #pragma once
+// MIT License
+// Copyright 2023--present Rohit Goswami <HaoZeke>
+// clang-format off
+#include <algorithm>
+#include <string>
+#include <vector>
+// clang-format on
 #include "../Helpers.hpp"
 
 namespace yodecon::helpers::string {

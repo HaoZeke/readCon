@@ -1,4 +1,6 @@
 #pragma once
+// MIT License
+// Copyright 2023--present Rohit Goswami <HaoZeke>
 #include <cstddef>
 namespace yodecon::constants {
 // First 9 lines form the header

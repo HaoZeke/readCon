@@ -1,4 +1,9 @@
 #pragma once
+// MIT License
+// Copyright 2023--present Rohit Goswami <HaoZeke>
+// clang-format off
+#include <algorithm>
+// clang-format on
 #include <iostream>
 #include <iterator>
 #include <optional>

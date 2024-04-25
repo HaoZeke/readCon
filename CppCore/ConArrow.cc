@@ -1,5 +1,7 @@
+// MIT License
+// Copyright 2023--present Rohit Goswami <HaoZeke>
 #ifdef WITH_ARROW
-#include "include/ConArrow.hpp"
+#include "readCon/include/ConArrow.hpp"
 
 namespace yodecon::conarrow {
 std::shared_ptr<arrow::Table>

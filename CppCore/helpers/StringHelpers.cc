@@ -1,4 +1,6 @@
-#include "../include/helpers/StringHelpers.hpp"
+// MIT License
+// Copyright 2023--present Rohit Goswami <HaoZeke>
+#include "readCon/include/helpers/StringHelpers.hpp"
 
 namespace yodecon::helpers {
 namespace string {

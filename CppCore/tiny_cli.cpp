@@ -1,8 +1,10 @@
-#include "Helpers.hpp"
-#include "include/BaseTypes.hpp"
-#include "include/FormatConstants.hpp"
-#include "include/ReadCon.hpp"
-#include "include/helpers/StringHelpers.hpp"
+// MIT License
+// Copyright 2023--present Rohit Goswami <HaoZeke>
+#include "readCon/include/Helpers.hpp"
+#include "readCon/include/BaseTypes.hpp"
+#include "readCon/include/FormatConstants.hpp"
+#include "readCon/include/ReadCon.hpp"
+#include "readCon/include/helpers/StringHelpers.hpp"
 
 #ifdef WITH_FMT
 #include <fmt/core.h>
