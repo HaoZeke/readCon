@@ -81,6 +81,11 @@ if get_option('with_apache_arrow')
   _args += ['-DWITH_ARROW']
 endif
 
+if get_option('with_xtensor')
+  _deps += dependency('xtensor')
+  _args += ['-DWITH_XTENSOR=TRUE']
+endif
+
 # --------------------- Library
 
 _incdirs += [ include_directories('CppCore') ]
@@ -103,6 +108,9 @@ test_array = [#
   ['ConFrameVec', 'testConFrameVec', 'TestConFrameVec.cc', ''],
   ['ConFrameHelpers', 'testConFrameHelpers', 'TestConFrameHelpers.cc', ''],
              ]
+if get_option('with_xtensor')
+  test_array += [['XTensor Adapters', 'testXtensorAdapter', 'TestXTensorAdapter.cc', '']]
+endif
 foreach test : test_array
   test(test.get(0),
        executable(test.get(1),

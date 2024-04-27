@@ -2294,6 +2294,49 @@ package:
   size: 3458821
   timestamp: 1713930497591
 - platform: linux-64
+  name: xtensor
+  version: 0.25.0
+  category: main
+  manager: conda
+  dependencies:
+  - libgcc-ng >=12
+  - libstdcxx-ng >=12
+  - xtl >=0.7.5,<0.8
+  url: https://conda.anaconda.org/conda-forge/linux-64/xtensor-0.25.0-h00ab1b0_0.conda
+  hash:
+    md5: 5f2d2dd476bac37923f88f6cc9f25060
+    sha256: 19c21598d51a3e420752ddf872a5020323079ea5a373a5b36073de0c3892d32c
+  build: h00ab1b0_0
+  arch: x86_64
+  subdir: linux-64
+  build_number: 0
+  constrains:
+  - xsimd >=11.0.0,<12
+  license: BSD-3-Clause
+  license_family: BSD
+  size: 202450
+  timestamp: 1706221581383
+- platform: linux-64
+  name: xtl
+  version: 0.7.7
+  category: main
+  manager: conda
+  dependencies:
+  - libgcc-ng >=12
+  - libstdcxx-ng >=12
+  url: https://conda.anaconda.org/conda-forge/linux-64/xtl-0.7.7-h00ab1b0_0.conda
+  hash:
+    md5: 620caa57497222ec99f3ad555a1b679d
+    sha256: 25b2bce3198aedc064a5c89e1542ca128ed8f852cc4fcd05d0f6add4d8a18561
+  build: h00ab1b0_0
+  arch: x86_64
+  subdir: linux-64
+  build_number: 0
+  license: BSD-3-Clause
+  license_family: BSD
+  size: 98290
+  timestamp: 1703254418240
+- platform: linux-64
   name: xz
   version: 5.2.6
   category: main

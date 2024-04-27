@@ -24,3 +24,4 @@ pre-commit = "3.7.0.*"
 # Optional
 arrow-cpp = "13.0.0.*"
 towncrier = "23.11.0.*"
+xtensor = "0.25.0.*"
