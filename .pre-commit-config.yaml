@@ -14,7 +14,12 @@ repos:
       entry: cppcheck
       language: system
       types_or: [c++, c]
-      args: ["--error-exitcode=0"]
+      args: [
+      "--error-exitcode=1",
+      "--std=c++20",
+      "--language=c++",
+      "--check-level=exhaustive",
+      ]
     - id: cpplint
       name: cpplint
       entry: cpplint
