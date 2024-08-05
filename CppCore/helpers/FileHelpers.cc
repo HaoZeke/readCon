@@ -6,6 +6,8 @@
 
 #include <filesystem>
 #include <fstream>
+#include <sstream>
+#include <vector>
 
 #include "readCon/include/Helpers.hpp"
 
