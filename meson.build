@@ -36,28 +36,8 @@ if is_mingw
 endif
 
 # --------------------- Dependencies
-if not is_windows
-# libm for Unix systems
-    m_dep = cppc.find_library('m', required: false)
-    _deps += m_dep
-    # For building with clang
-    _deps += [declare_dependency(link_args: '-lstdc++')]
-endif
-
-if cppc.get_id() == 'msvc'
-# Don't depend on VCRUNTIME140_1.dll
-    # https://cibuildwheel.readthedocs.io/en/stable/faq/#windows-importerror-dll-load-failed-the-specific-module-could-not-be-found
-    add_project_arguments('/d2FH4-', language: ['cpp', 'c'])
-    if get_option('with_stdcall')
-        add_project_arguments(
-            cppc.get_supported_arguments('/Gz'),
-            language: ['cpp', 'c'],
-        )
-    endif
-endif
-
-# Faster, but optional due to size
 if get_option('with_rangev3')
+# Faster, but optional due to size
     ranges_dep = dependency('range-v3', version: ['>=0.11.0'])
     if not ranges_dep.found()
         ranges_dep = dependency('ranges', subproject: subproject('ranges-v3'))
