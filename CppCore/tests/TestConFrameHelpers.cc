@@ -9,7 +9,8 @@
  */
 
 #include "readCon/include/ReadCon.hpp"
-#include <catch2/catch_all.hpp>
+
+#include "catch2/catch_amalgamated.hpp"
 
 TEST_CASE("SymbolToAtomicNumberTest - ValidSymbols", "[SymbolToAtomicNumber]") {
   std::vector<std::string> symbols = {"H", "O", "N", "Fe", "Au"};
