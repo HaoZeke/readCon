@@ -5,7 +5,7 @@ variety of interpreted languages.
 ** Usage
 This is C++ libary built with ~meson~. The most automated way to get started is:
 #+begin_src bash
-micromamba create -f environment.yml
+micromamba create -n readcon_dev -f conda-lock.yml
 micromamba activate readcon_dev
 meson setup bbdir -Dwith_tests=true
 meson compile -C bbdir
