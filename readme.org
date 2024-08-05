@@ -7,7 +7,7 @@ This is C++ libary built with ~meson~. The most automated way to get started is:
 #+begin_src bash
 micromamba create -n readcon_dev -f conda-lock.yml
 micromamba activate readcon_dev
-meson setup bbdir -Dwith_tests=true
+meson setup bbdir --prefix=$CONDA_PREFIX --libdir=lib --native-file nativeFiles/mold.ini --native-file nativeFiles/ccache_gnu.ini -Dwith_tests=true
 meson compile -C bbdir
 meson test -C bbdir
 #+end_src
