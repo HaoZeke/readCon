@@ -13,10 +13,10 @@
 version: 1
 metadata:
   content_hash:
-    linux-64: a355e9221bb741ef0a21c16087d9f8daa3f79b7dca45b1f9040c9edd594007d6
-    osx-arm64: 61eea19e6dc63810687f404629fa8aace626174980be1d37fe014a0901c26a77
-    osx-64: 398a9e4055981b3d2d601e5d4cf65309e50337a1d6c756966bfb49404e34cb4e
-    win-64: fa6e633a76232dbf81a93a4cf4c9dd32f14570e67925f5e1412c908585d3e5ec
+    linux-64: c0fe03fea4203b6f1356201086a5dc577179ca08cdff1ef5570edf7747de2c47
+    osx-arm64: cf8f84b7545bc4a7c48860aa397a88cea43581412d147c60929bda099df43b2c
+    osx-64: dd65154802e4d2bd0503fe35bdc267ef0df53e83fda13913ebdf477dca12c1cf
+    win-64: 926522655f949bfd95023f0c81beeb813233a2158afc85c7a5ce9c0900a9a28a
   channels:
   - url: conda-forge
     used_env_vars: []
@@ -1241,55 +1241,6 @@ package:
   hash:
     md5: 9caa97c9504072cd060cf0a3142cc0ed
     sha256: 7f37bb33c7954de1b4d19ad622859feb4f6c58f751c38b895524cad4e44af72e
-  category: main
-  optional: false
-- name: catch2
-  version: 3.6.0
-  manager: conda
-  platform: linux-64
-  dependencies:
-    libgcc-ng: '>=12'
-  url: https://conda.anaconda.org/conda-forge/linux-64/catch2-3.6.0-h297d8ca_0.conda
-  hash:
-    md5: 7c274652aedb14655b3b13064d246a19
-    sha256: c25cc9ffd657ea71766a8fce78797c0b4db5e64cdc592e8489a210becfe2d2cd
-  category: main
-  optional: false
-- name: catch2
-  version: 3.6.0
-  manager: conda
-  platform: osx-64
-  dependencies:
-    __osx: '>=10.9'
-  url: https://conda.anaconda.org/conda-forge/osx-64/catch2-3.6.0-hfd4f2f2_0.conda
-  hash:
-    md5: 18bc5220a4227cc2d850de4c3fb69fdc
-    sha256: e4ee4d77ac8c7a9c5c594cc4fc92ea088df073fc82179b87ee4faa88f7d1f6fe
-  category: main
-  optional: false
-- name: catch2
-  version: 3.6.0
-  manager: conda
-  platform: osx-arm64
-  dependencies:
-    __osx: '>=11.0'
-  url: https://conda.anaconda.org/conda-forge/osx-arm64/catch2-3.6.0-h420ef59_0.conda
-  hash:
-    md5: c42dd69c20ada57afd36e2f5cde21687
-    sha256: 5f66b7b25b84cb8623c8cac1927563f503c7e23daee4aea1c7cfc11d02880604
-  category: main
-  optional: false
-- name: catch2
-  version: 3.6.0
-  manager: conda
-  platform: win-64
-  dependencies:
-    ucrt: '>=10.0.20348.0'
-    vc14_runtime: '>=14.29.30139'
-  url: https://conda.anaconda.org/conda-forge/win-64/catch2-3.6.0-h7f575de_0.conda
-  hash:
-    md5: fb22cec315b50638355b2e42caf92e11
-    sha256: 978ea494252fe73e410d05a2864cb600e064621fdfc1c78dccd45831393291dd
   category: main
   optional: false
 - name: cctools
