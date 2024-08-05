@@ -20,13 +20,13 @@ host_system = host_machine.system()
 is_windows = host_system == 'windows'
 is_mingw = is_windows and cc.get_id() == 'gcc'
 
-# Conditional arguments
-if host_system == 'linux'
-    _args += '-Wno-return-type'
-    _args += '-Wno-switch'
-    _args += '-Wno-unused-variable'
-    _args += '-Wno-unused-const-variable'
-endif
+_global_cpp_args = cppc.get_supported_arguments(
+    '-Wno-return-type',
+    '-Wno-switch',
+    '-Wno-unused-variable',
+    '-Wno-unused-const-variable',
+)
+add_project_arguments(_global_cpp_args, language: 'cpp')
 
 cpu_family = host_machine.cpu_family()
 
