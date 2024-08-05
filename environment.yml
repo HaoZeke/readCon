@@ -17,6 +17,7 @@ dependencies:
   - fmt==9.1.0
   # Python helpers
   - pipx # conda-lock pdm towncrier
+  - pre-commit
   # Optional
   - arrow-cpp
   # Pre-commit
