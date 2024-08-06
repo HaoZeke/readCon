@@ -13,10 +13,10 @@
 version: 1
 metadata:
   content_hash:
-    linux-64: acf915c7b004fcc08d047c29c70c4773a5ae0eb2bcd83e54daaa2eb0702fb6fe
-    osx-arm64: 930b21d1ab83a476e0f0356fda926a0f576e967c0189b2e80144df3283dd5e1d
-    osx-64: 974bceb56b01581acf6db338149d82879dd61415ef9e851dba8f931131f351a1
-    win-64: 4e974c3bc8d39a696eea2ea71cc5e2de076c18bb392516dc652a501fa262c4a8
+    linux-64: 69d5bdc19223f56c6d180e9a16528ff824b4ab22639af9d9bfc24d00039248ae
+    osx-arm64: 42f125570f2e161fa46b8dae71ee528118a96af4348cede978884766f210c8ad
+    osx-64: 418e7d1aa310a0631da3d33296d4a27497d685f5ce04a823a7e27ba182c78946
+    win-64: 627ba9d445d5b91950eefad852e46ff4facf1c94da9293f88493ef70e0c1addd
   channels:
   - url: conda-forge
     used_env_vars: []
@@ -6978,6 +6978,112 @@ package:
   hash:
     md5: ba83df93b48acfc528f5464c9a882baa
     sha256: 8caeda9c0898cb8ee2cf4f45640dbbbdf772ddc01345cfb0f7b352c58b4d8025
+  category: main
+  optional: false
+- name: xtensor
+  version: 0.25.0
+  manager: conda
+  platform: linux-64
+  dependencies:
+    libgcc-ng: '>=12'
+    libstdcxx-ng: '>=12'
+    xtl: '>=0.7.5,<0.8'
+  url: https://conda.anaconda.org/conda-forge/linux-64/xtensor-0.25.0-h00ab1b0_0.conda
+  hash:
+    md5: 5f2d2dd476bac37923f88f6cc9f25060
+    sha256: 19c21598d51a3e420752ddf872a5020323079ea5a373a5b36073de0c3892d32c
+  category: main
+  optional: false
+- name: xtensor
+  version: 0.25.0
+  manager: conda
+  platform: osx-64
+  dependencies:
+    libcxx: '>=15'
+    xtl: '>=0.7.5,<0.8'
+  url: https://conda.anaconda.org/conda-forge/osx-64/xtensor-0.25.0-h7728843_0.conda
+  hash:
+    md5: e761cef77fcb4205336cf82d8e459816
+    sha256: 84ceb9aeab6bb1e1d50c67458f12b76e9ec9090bb0af263e0bcb0749092275a3
+  category: main
+  optional: false
+- name: xtensor
+  version: 0.25.0
+  manager: conda
+  platform: osx-arm64
+  dependencies:
+    libcxx: '>=15'
+    xtl: '>=0.7.5,<0.8'
+  url: https://conda.anaconda.org/conda-forge/osx-arm64/xtensor-0.25.0-h2ffa867_0.conda
+  hash:
+    md5: 95f0b77882b1fb7e5fff15c29eb6b247
+    sha256: 8485a64911c7011c0270b8266ab2bffa1da41c59ac4f0a48000c31d4f4a966dd
+  category: main
+  optional: false
+- name: xtensor
+  version: 0.25.0
+  manager: conda
+  platform: win-64
+  dependencies:
+    ucrt: '>=10.0.20348.0'
+    vc: '>=14.2,<15'
+    vc14_runtime: '>=14.29.30139'
+    xtl: '>=0.7.5,<0.8'
+  url: https://conda.anaconda.org/conda-forge/win-64/xtensor-0.25.0-h181d51b_0.conda
+  hash:
+    md5: d383cb69f5bf2a7dd56b9043e50939e1
+    sha256: 788e06573247ba371e3a969553a4ca36813645af04da33a2b15114ec17a8982d
+  category: main
+  optional: false
+- name: xtl
+  version: 0.7.7
+  manager: conda
+  platform: linux-64
+  dependencies:
+    libgcc-ng: '>=12'
+    libstdcxx-ng: '>=12'
+  url: https://conda.anaconda.org/conda-forge/linux-64/xtl-0.7.7-h00ab1b0_0.conda
+  hash:
+    md5: 620caa57497222ec99f3ad555a1b679d
+    sha256: 25b2bce3198aedc064a5c89e1542ca128ed8f852cc4fcd05d0f6add4d8a18561
+  category: main
+  optional: false
+- name: xtl
+  version: 0.7.7
+  manager: conda
+  platform: osx-64
+  dependencies:
+    libcxx: '>=15'
+  url: https://conda.anaconda.org/conda-forge/osx-64/xtl-0.7.7-h7728843_0.conda
+  hash:
+    md5: 09eb02b1e0a8f73e37d89bc4a7a097d4
+    sha256: a41f67ca5647b46f3eec396f286f3a50ed1ca9f773b71cd1de5f01fae564f16d
+  category: main
+  optional: false
+- name: xtl
+  version: 0.7.7
+  manager: conda
+  platform: osx-arm64
+  dependencies:
+    libcxx: '>=15'
+  url: https://conda.anaconda.org/conda-forge/osx-arm64/xtl-0.7.7-h2ffa867_0.conda
+  hash:
+    md5: 8543bdf75b850ac5b7e3c70c5656f18c
+    sha256: 04d4e8504a4111d0974c41e9cd086bf740f1c02912537ca8675758ec4a565445
+  category: main
+  optional: false
+- name: xtl
+  version: 0.7.7
+  manager: conda
+  platform: win-64
+  dependencies:
+    ucrt: '>=10.0.20348.0'
+    vc: '>=14.2,<15'
+    vc14_runtime: '>=14.29.30139'
+  url: https://conda.anaconda.org/conda-forge/win-64/xtl-0.7.7-h181d51b_0.conda
+  hash:
+    md5: 8a81febc56cc314d46c3470e8fd3aaf9
+    sha256: b48dd97d43db7f0cbb123857578b4988cc4d11d58bb386aca069855765f3bcaf
   category: main
   optional: false
 - name: xz

@@ -49,7 +49,7 @@ if get_option('with_rangev3')
 endif
 
 if get_option('with_fmt')
-    fmt_dep = dependency('fmt', version: '10.0.0')
+    fmt_dep = dependency('fmt', version: '<10.0.0')
     if not fmt_dep.found()
         fmt_dep = dependency('fmt', subproject: subproject('fmt'))
     endif
