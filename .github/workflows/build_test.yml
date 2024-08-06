@@ -19,7 +19,7 @@ jobs:
       fail-fast: false
       matrix:
         config:
-          - {os: windows-latest}
+          - {os: windows-2019}
           - {os: macOS-latest}
           - {os: ubuntu-latest}
     steps:
