@@ -70,12 +70,16 @@ int main(int argc, char *argv[]) {
   // }
 
   // ConFrameVec
-  size_t framesize =
-      std::accumulate(tmp.natms_per_type.begin(), tmp.natms_per_type.end(), 0);
-  for (size_t idx{0}; idx < framesize; idx++) {
-    fmt::print("{} {} {} {} {} {}\n", tmp.symbol[idx], tmp.x[idx], tmp.y[idx],
-               tmp.z[idx], tmp.is_fixed[idx], tmp.atom_id[idx]);
-  }
+  // TODO(rg): Doesn't work out of the box on newer fmt (10)
+  // Provide a formatter
+  // size_t framesize =
+  //     std::accumulate(tmp.natms_per_type.begin(), tmp.natms_per_type.end(),
+  //     0);
+  // for (size_t idx{0}; idx < framesize; idx++) {
+  //   fmt::print("{} {} {} {} {} {}\n", tmp.symbol[idx], tmp.x[idx],
+  //   tmp.y[idx],
+  //              tmp.z[idx], tmp.is_fixed[idx], tmp.atom_id[idx]);
+  // }
 
   // auto atmnums = yodecon::symbols_to_atomic_numbers(tmp.symbol);
   // fmt::print("\n");
