@@ -1,6 +1,5 @@
 _args += ['-DWITH_TEST']
 test_args = _args
-test_deps = _deps
 test_array = [  #
     ['ConFrame', 'testConFrame', 'TestConFrame.cc', ''],
     ['ConFrameVec', 'testConFrameVec', 'TestConFrameVec.cc', ''],
@@ -17,7 +16,7 @@ foreach test : test_array
         executable(
             test.get(1),
             sources: [test.get(2), catch_cpp],
-            dependencies: _deps,
+            dependencies: readconss.dependencies(),
             link_with: _linkto,
             cpp_args: _args,
             include_directories: _incdirs,
