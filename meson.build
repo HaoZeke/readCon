@@ -66,6 +66,16 @@ if get_option('with_xtensor')
     ss.add(when: xtensor_dep)
 endif
 
+if get_option('with_eigen')
+    eigen_dep = dependency(
+        'Eigen3',
+        method: 'cmake',
+        modules: ['Eigen3::Eigen'],
+        required: true,
+    )
+    ss.add(when: eigen_dep)
+endif
+
 # --------------------- Library
 
 _incdirs += [include_directories('CppCore')]
