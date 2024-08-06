@@ -13,10 +13,10 @@
 version: 1
 metadata:
   content_hash:
-    linux-64: 69d5bdc19223f56c6d180e9a16528ff824b4ab22639af9d9bfc24d00039248ae
-    osx-arm64: 42f125570f2e161fa46b8dae71ee528118a96af4348cede978884766f210c8ad
-    osx-64: 418e7d1aa310a0631da3d33296d4a27497d685f5ce04a823a7e27ba182c78946
-    win-64: 627ba9d445d5b91950eefad852e46ff4facf1c94da9293f88493ef70e0c1addd
+    linux-64: 9cbc36b4a4b6e177acd710c6854afa65eed675de166c8f11497a86e0b3a92181
+    osx-arm64: 3149185204921355740df60ea5e8a80b492c9e56c1d23d9a53ac08caf12619e8
+    osx-64: 3e9ad41229e4a1b4290ed3f756b413c56915c4815e2303186bc2b3f57de09c38
+    win-64: 2736337789fae4cd13de5ae84dc2f22317c1d2ef45854e5112d4a51e90f275d3
   channels:
   - url: conda-forge
     used_env_vars: []
@@ -2247,6 +2247,57 @@ package:
     sha256: 3ff11acdd5cc2f80227682966916e878e45ced94f59c402efb94911a5774e84e
   category: main
   optional: false
+- name: eigen
+  version: 3.4.0
+  manager: conda
+  platform: linux-64
+  dependencies:
+    libgcc-ng: '>=12'
+    libstdcxx-ng: '>=12'
+  url: https://conda.anaconda.org/conda-forge/linux-64/eigen-3.4.0-h00ab1b0_0.conda
+  hash:
+    md5: b1b879d6d093f55dd40d58b5eb2f0699
+    sha256: 53b15a98aadbe0704479bacaf7a5618fcb32d1577be320630674574241639b34
+  category: main
+  optional: false
+- name: eigen
+  version: 3.4.0
+  manager: conda
+  platform: osx-64
+  dependencies:
+    libcxx: '>=15.0.7'
+  url: https://conda.anaconda.org/conda-forge/osx-64/eigen-3.4.0-h1c7c39f_0.conda
+  hash:
+    md5: 5b2cfc277e3d42d84a2a648825761156
+    sha256: 187c0677e0cdcdc39aed716687a6290dd5b7f52b49eedaef2ed76be6cd0a5a3d
+  category: main
+  optional: false
+- name: eigen
+  version: 3.4.0
+  manager: conda
+  platform: osx-arm64
+  dependencies:
+    libcxx: '>=15.0.7'
+  url: https://conda.anaconda.org/conda-forge/osx-arm64/eigen-3.4.0-h1995070_0.conda
+  hash:
+    md5: 3691ea3ff568ba38826389bafc717909
+    sha256: c20b3677b16d8907343fce68e7c437184fef7f5ed0a765c104b775f8a485c5c9
+  category: main
+  optional: false
+- name: eigen
+  version: 3.4.0
+  manager: conda
+  platform: win-64
+  dependencies:
+    ucrt: '>=10.0.20348.0'
+    vc: '>=14.2,<15'
+    vc14_runtime: '>=14.29.30139'
+  url: https://conda.anaconda.org/conda-forge/win-64/eigen-3.4.0-h91493d7_0.conda
+  hash:
+    md5: 305b3ca7023ac046b9a42a48661f6512
+    sha256: 633a6a8db1f9a010cb0619f3446fb61f62dea348b09615ffae9744ab1001c24c
+  category: main
+  optional: false
 - name: filelock
   version: 3.15.4
   manager: conda
@@ -2323,53 +2374,54 @@ package:
   category: main
   optional: false
 - name: fmt
-  version: 9.1.0
+  version: 10.0.0
   manager: conda
   platform: linux-64
   dependencies:
     libgcc-ng: '>=12'
     libstdcxx-ng: '>=12'
-  url: https://conda.anaconda.org/conda-forge/linux-64/fmt-9.1.0-h924138e_0.tar.bz2
+  url: https://conda.anaconda.org/conda-forge/linux-64/fmt-10.0.0-h00ab1b0_0.conda
   hash:
-    md5: b57864c85261a0fbc7132d2cc17478c7
-    sha256: bd48506faffa86e07f7b40d54f2d7e13b0fc956eda9760236750f5ea20db7129
+    md5: fc819abaaf722264a79fa583cd487d2e
+    sha256: e7602546b860d6575aa0d68391546c151dcc04463b84be803371c44fbdd78f3c
   category: main
   optional: false
 - name: fmt
-  version: 9.1.0
+  version: 10.0.0
   manager: conda
   platform: osx-64
   dependencies:
-    libcxx: '>=14.0.4'
-  url: https://conda.anaconda.org/conda-forge/osx-64/fmt-9.1.0-hb8565cd_0.tar.bz2
+    libcxx: '>=15.0.7'
+  url: https://conda.anaconda.org/conda-forge/osx-64/fmt-10.0.0-h1c7c39f_0.conda
   hash:
-    md5: 310d897883dbdd88555d6321a4c2e6e8
-    sha256: 4891b66c94df8a346010caefb5d92df5e367be87ef0dea35a15d988f39a82719
+    md5: e2001176a2019abb849456b55372d571
+    sha256: cd23ff5c0f40ae58815c630d856f46e3b966b10f3e786e34c815eb9ab485cca7
   category: main
   optional: false
 - name: fmt
-  version: 9.1.0
+  version: 10.0.0
   manager: conda
   platform: osx-arm64
   dependencies:
-    libcxx: '>=14.0.4'
-  url: https://conda.anaconda.org/conda-forge/osx-arm64/fmt-9.1.0-hffc8910_0.tar.bz2
+    libcxx: '>=15.0.7'
+  url: https://conda.anaconda.org/conda-forge/osx-arm64/fmt-10.0.0-h1995070_0.conda
   hash:
-    md5: 78c11e6b1e971d49e9610d856a845d2f
-    sha256: 9864e8ed7501ef8d0e6c3de64b9a45865d05c9e19e074fb15633cf0b8924c459
+    md5: 94bb58f074f07f32464cc23eb54f2ff0
+    sha256: f0698934da84f42e5b2084e9f98d59fb8230b545a3bbf9a5d558115b3864e0b0
   category: main
   optional: false
 - name: fmt
-  version: 9.1.0
+  version: 10.0.0
   manager: conda
   platform: win-64
   dependencies:
+    ucrt: '>=10.0.20348.0'
     vc: '>=14.2,<15'
-    vs2015_runtime: '>=14.29.30037'
-  url: https://conda.anaconda.org/conda-forge/win-64/fmt-9.1.0-h181d51b_0.tar.bz2
+    vc14_runtime: '>=14.29.30139'
+  url: https://conda.anaconda.org/conda-forge/win-64/fmt-10.0.0-h181d51b_0.conda
   hash:
-    md5: 31a20cf261b2bd0a76d670db1b3e6fa1
-    sha256: b4882f05294a46949cf4d15e4b2c50f29257b0d042d7d8184e4722b392d71193
+    md5: 7192912cfc2fb717bd737e3512de4d8f
+    sha256: 2603eaa921972fd10abcda03d4b559980e58462324accba17b35b4a48572b1a1
   category: main
   optional: false
 - name: fortran-compiler

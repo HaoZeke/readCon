@@ -14,7 +14,9 @@ dependencies:
   - pkg-config
   # Backports away from C++20
   - range-v3
-  - fmt==9.1.0
+  # Pinned
+  - "eigen==3.4.0"
+  - "fmt<=10"
   # Python helpers
   - pipx # conda-lock pdm towncrier
   - pre-commit

@@ -10,6 +10,11 @@ if get_option('with_xtensor')
         ['XTensor Adapters', 'testXtensorAdapter', 'TestXTensorAdapter.cc', ''],
     ]
 endif
+if get_option('with_eigen')
+    test_array += [
+        ['Eigen Adapters', 'testEigenAdapter', 'TestEigenAdapter.cc', ''],
+    ]
+endif
 foreach test : test_array
     test(
         test.get(0),

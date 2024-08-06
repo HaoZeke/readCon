@@ -10,6 +10,7 @@ config.set('WITH_RANGE_V3', get_option('with_rangev3'))
 config.set('WITH_FMT', get_option('with_fmt'))
 config.set('WITH_APACHE_ARROW', get_option('with_apache_arrow'))
 config.set('WITH_XTENSOR', get_option('with_xtensor'))
+config.set('WITH_EIGEN', get_option('with_eigen'))
 
 readconconf = configure_file(output: 'readcon_conf.h', configuration: config)
 
