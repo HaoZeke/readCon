@@ -19,22 +19,23 @@ jobs:
       fail-fast: false
       matrix:
         config:
-          - {os: windows-latest}
+          - {os: windows-2019}
           - {os: macOS-latest}
           - {os: ubuntu-latest}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           submodules: "recursive"
           fetch-depth: 0
       - name: Install Conda environment
         uses: mamba-org/setup-micromamba@v1
         with:
-          environment-file: environment.yml
+          environment-file: conda-lock.yml
+          environment-name: readcon_dev
           cache-environment: true
       - name: Build and Test
         shell: bash -l {0}
         run: |
-          meson setup bbdir -Dwith_tests=True
-          meson compile -C bbdir
-          meson test -C bbdir
+          meson setup bbdir --prefix=$CONDA_PREFIX --libdir=lib -Dwith_tests=true -Dwith_fmt=true -Dwith_xtensor=true -Dwith_apache_arrow=true -Dwith_rangev3=true
+          meson compile -C bbdir -vvv
+          meson test -C bbdir -vvv

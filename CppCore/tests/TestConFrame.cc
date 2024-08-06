@@ -10,8 +10,7 @@
 
 #include "readCon/include/ReadCon.hpp"
 
-#include <catch2/catch_all.hpp>
-#include <catch2/matchers/catch_matchers_floating_point.hpp>
+#include "catch2/catch_amalgamated.hpp"
 
 constexpr double fp_tol{1e-12};
 

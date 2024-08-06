@@ -7,10 +7,13 @@ jobs:
   pre-commit:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Install Conda environment
-      uses: mamba-org/provision-with-micromamba@main
+      uses: mamba-org/setup-micromamba@v1
+      with:
+        environment-file: conda-lock.yml
+        environment-name: readcon_dev
     - name: Run precommit
       shell: bash -l {0}
       run: |
-        pipx run pre-commit run -a
+        pre-commit run -a

@@ -2,7 +2,8 @@
 // Copyright 2023--present Rohit Goswami <HaoZeke>
 #include "readCon/include/ReadCon.hpp"
 #include "readCon/include/adapters/xtensor.hpp"
-#include <catch2/catch_all.hpp>
+
+#include "catch2/catch_amalgamated.hpp"
 
 #ifdef WITH_XTENSOR
 

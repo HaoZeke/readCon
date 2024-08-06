@@ -1,6 +1,6 @@
 [project]
 name = "readCon"
-version = "0.1.0"
+version = "0.1.5"
 description = "A library for fast parsing of .con files"
 authors = ["Rohit Goswami <rog32@hi.is>"]
 channels = ["conda-forge"]
@@ -16,7 +16,6 @@ meson = "1.2.3.*"
 cmake = "3.27.6.*"
 ninja = "1.11.1.*"
 fmt = "10.1.1.*"
-catch2 = "3.4.0.*"
 cppcheck = "2.13.4.*"
 cpplint = "1.6.0.*"
 clang-format = "18.1.3.*"
