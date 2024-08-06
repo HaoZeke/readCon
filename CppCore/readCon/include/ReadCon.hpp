@@ -3,6 +3,7 @@
 // Copyright 2023--present Rohit Goswami <HaoZeke>
 
 #include <algorithm>
+#include <numeric>
 #include <stdexcept>
 #include <string>
 #include <vector>
