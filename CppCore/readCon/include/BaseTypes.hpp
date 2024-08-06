@@ -1,7 +1,6 @@
 #pragma once
 // MIT License
 // Copyright 2023--present Rohit Goswami <HaoZeke>
-
 #include <array>
 #include <string>
 #include <unordered_map>

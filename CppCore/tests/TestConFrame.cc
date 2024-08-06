@@ -1,13 +1,5 @@
 // MIT License
 // Copyright 2023--present Rohit Goswami <HaoZeke>
-/*
- * TestConFrame.cc
- *
- *  Created on: 23 July 2024
- *      Author: Rohit Goswami
- *     Company: University of Iceland
- */
-
 #include "readCon/include/ReadCon.hpp"
 
 #include "catch2/catch_amalgamated.hpp"
