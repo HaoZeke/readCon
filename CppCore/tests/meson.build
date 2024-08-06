@@ -7,7 +7,7 @@ test_array = [  #
 ]
 if get_option('with_xtensor')
     test_array += [
-        ['XTensor Adapters', 'testXtensorAdapter', 'TestXTensorAdapter.cc'],
+        ['XTensor Adapters', 'testXtensorAdapter', 'TestXTensorAdapter.cc', ''],
     ]
 endif
 foreach test : test_array

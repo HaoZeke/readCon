@@ -35,7 +35,7 @@ repos:
       entry: cpplint
       language: system
       types_or: [c++, c]
-      args: ["--filter=-whitespace/comments,-build/c++11,-runtime/references"]
+      args: ["--filter=-whitespace/comments,-build/c++11,-runtime/references,-build/include_subdir"]
     - id: clang-format
       name: clang-format
       entry: clang-format

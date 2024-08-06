@@ -11,6 +11,10 @@ config.set('WITH_FMT', get_option('with_fmt'))
 config.set('WITH_APACHE_ARROW', get_option('with_apache_arrow'))
 config.set('WITH_XTENSOR', get_option('with_xtensor'))
 
+readconconf = configure_file(output: 'readcon_conf.h', configuration: config)
+
+ss.add(readconconf)
+
 readconss = ss.apply(config)
 
 

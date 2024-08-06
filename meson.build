@@ -49,7 +49,7 @@ if get_option('with_rangev3')
 endif
 
 if get_option('with_fmt')
-    fmt_dep = dependency('fmt', version: '9.1.0')
+    fmt_dep = dependency('fmt', version: '10.0.0')
     if not fmt_dep.found()
         fmt_dep = dependency('fmt', subproject: subproject('fmt'))
     endif
@@ -58,18 +58,12 @@ endif
 
 if get_option('with_apache_arrow')
     arrow_dep = dependency('arrow', components: ['Arrow'], required: true)
-    ss.add(
-        when: arrow_dep,
-        if_true: files('CppCore/ConArrow.cc', 'CppCore/helpers/ArrowHelpers.cc'),
-    )
+    ss.add(when: arrow_dep, if_true: files('CppCore/ConArrow.cc'))
 endif
 
 if get_option('with_xtensor')
     xtensor_dep = dependency('xtensor')
-    ss.add(
-        when: xtensor_dep,
-        if_true: files('CppCore/helpers/XtensorHelpers.cc'),
-    )
+    ss.add(when: xtensor_dep)
 endif
 
 # --------------------- Library

@@ -8,6 +8,8 @@
 #include <string>
 #include <vector>
 
+#include "readcon_conf.h"
+
 #ifdef WITH_RANGE_V3
 #include <range/v3/all.hpp>
 #endif
