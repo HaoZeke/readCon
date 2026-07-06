@@ -1,3 +1,21 @@
+* Status: superseded / archived
+
+This repository is *archived* and *no longer maintained*.
+
+Use the successor project instead:
+
+- *Repository:* [[https://github.com/lode-org/readcon-core][lode-org/readcon-core]]
+- *Documentation (including *C / C++* install and =include/readcon-core.h= usage):*
+  [[https://lode-org.github.io/readcon-core/getting-started.html][Getting started — C/C++ API]]
+- *Project docs home:* [[https://lode-org.github.io/readcon-core/][https://lode-org.github.io/readcon-core/]]
+- *Rust API docs:* [[https://docs.rs/readcon-core][docs.rs/readcon-core]]
+
+=readcon-core= is the oxidised Rust re-implementation with a stable *C ABI*
+and *C++-friendly headers* (=readcon-core.h= / =readcon-core.hpp=), multi-language
+bindings, and ongoing packaging (including conda-forge staged recipes).
+
+Historical notes for this C++/meson library remain below for reference only.
+
 * About
 This is a repository meant to provide *fast* access to reading ~.con~ files from
 various languages. The goal is to be able to quickly generate visuals in a
